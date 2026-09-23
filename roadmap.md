@@ -4,9 +4,9 @@
 **Architecture:** A strictly separated modular monolith, evolving into a Monolith + 1 Worker architecture for real video transcoding.
 
 ## Phase 1 — Core Monolith & Data Foundations
-- [ ] Set up database migrations (Flyway) to create the core `Users`, `Catalog`, and `WatchHistory` tables.
-- [ ] Build the basic entity classes (`User`, `Video`, `WatchRecord`).
-- [ ] Enforce domain boundaries: ensure no direct database joins exist between distinct domains (use primitive ID references instead).
+- [x] Set up database migrations (Flyway) to create the core `Users`, `Catalog`, and `WatchHistory` tables.
+- [x] Build the basic entity classes (`User`, `Video`, `WatchRecord`).
+- [x] Enforce domain boundaries: ensure no direct database joins exist between distinct domains (use primitive ID references instead).
 
 ## Phase 2 — The GraphQL Edge & Security
 - [ ] Integrate Netflix DGS to serve data via a GraphQL API.
