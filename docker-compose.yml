@@ -11,7 +11,7 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d steamera"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d streamera"]
       interval: 5s
       timeout: 5s
       retries: 5
