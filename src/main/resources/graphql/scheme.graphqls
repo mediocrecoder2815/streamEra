@@ -1,0 +1,26 @@
+# Operation type
+type Query{
+    users: [User!]!
+}
+
+
+# Object type
+scalar Date
+
+type User{
+    id: ID!
+    username: String!
+    role: Role!
+}
+
+type Role{
+    id: Int!
+    name: String!
+}
+
+type WatchHistory{
+    id: ID!
+    userId: ID!
+    videoId: Int!
+    date: Date!
+}

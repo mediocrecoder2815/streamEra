@@ -15,12 +15,12 @@ INSERT INTO users (user_id, username, password, role_id) VALUES
     ('22222222-2222-2222-2222-222222222222', 'bob', 'password', 2),
     ('33333333-3333-3333-3333-333333333333', 'carol', 'password', 3);
 
-INSERT INTO videos (video_id, name, video_length, size, video_url) VALUES
-    (1, 'The Last Frontier', 7420, 2147483648, '/videos/the-last-frontier.mp4'),
-    (2, 'Midnight Run', 5680, 1610612736, '/videos/midnight-run.mp4'),
-    (3, 'Quantum Drift', 8453, 3221225472, '/videos/quantum-drift.mp4'),
-    (4, 'Paper Planes', 4399, 1073741824, '/videos/paper-planes.mp4'),
-    (5, 'Deep Ocean: Secrets', 6112, 2684354560, '/videos/deep-ocean-secrets.mp4');
+INSERT INTO videos (name, video_length, size, video_url) VALUES
+    ( 'The Last Frontier', 7420, 2147483648, '/videos/the-last-frontier.mp4'),
+    ( 'Midnight Run', 5680, 1610612736, '/videos/midnight-run.mp4'),
+    ( 'Quantum Drift', 8453, 3221225472, '/videos/quantum-drift.mp4'),
+    ( 'Paper Planes', 4399, 1073741824, '/videos/paper-planes.mp4'),
+    ( 'Deep Ocean: Secrets', 6112, 2684354560, '/videos/deep-ocean-secrets.mp4');
 
 INSERT INTO video_categories (video_categories_id, category_id, video_id) VALUES
     (gen_random_uuid(), 1, 1),
