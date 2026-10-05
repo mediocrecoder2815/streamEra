@@ -1,9 +1,7 @@
 # Operations
 type Query{
     users: [User!]!
-}
-type Query{
-    user: User!
+    user(userId: ID!): User
 }
 
 
@@ -11,14 +9,13 @@ type Query{
 scalar Date
 
 type User{
-    id: ID!
+    userId: ID!
     username: String!
-    watchHistory: WatchHistory
     role: Role
 }
 
 type Role{
-    id: Int
+    roleId: Int
     name: String!
 }
 
