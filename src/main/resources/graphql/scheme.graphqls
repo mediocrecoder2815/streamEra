@@ -1,20 +1,24 @@
-# Operation type
+# Operations
 type Query{
     users: [User!]!
 }
+type Query{
+    user: User!
+}
 
 
-# Object type
+# Objects / types
 scalar Date
 
 type User{
     id: ID!
     username: String!
-    role: Role!
+    watchHistory: WatchHistory
+    role: Role
 }
 
 type Role{
-    id: Int!
+    id: Int
     name: String!
 }
 

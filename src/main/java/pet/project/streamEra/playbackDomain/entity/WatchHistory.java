@@ -2,12 +2,16 @@ package pet.project.streamEra.playbackDomain.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Entity(name = "watch_history")
+@Setter
+@Getter
 @DynamicInsert
 public class WatchHistory {
     @Id

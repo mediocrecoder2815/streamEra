@@ -1,4 +1,4 @@
-package pet.project.streamEra.graphql.config;
+package pet.project.streamEra.configs;
 
 import graphql.GraphQLContext;
 import graphql.execution.CoercedVariables;

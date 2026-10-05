@@ -1,7 +1,7 @@
 INSERT INTO roles (role_id, name) VALUES
-    (1, 'ADMIN'),
-    (2, 'USER'),
-    (3, 'PREMIUM');
+    (1, 'USER'),
+    (2, 'PREMIUM'),
+    (3, 'ADMIN');
 
 INSERT INTO categories (category_id, name) VALUES
     (1, 'Action'),

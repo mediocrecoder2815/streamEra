@@ -3,12 +3,14 @@ package pet.project.streamEra.videoDomain.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "videos")
 @Getter
+@Setter
 public class Video {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
