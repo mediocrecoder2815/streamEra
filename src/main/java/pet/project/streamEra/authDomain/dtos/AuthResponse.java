@@ -1,6 +1,6 @@
 package pet.project.streamEra.authDomain.dtos;
 
-public record AuthResponseDto(
+public record AuthResponse(
     String token,
     String username
 ) {

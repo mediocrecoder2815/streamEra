@@ -4,9 +4,25 @@ type Query{
     user(userId: ID!): User
 }
 
-
+# Input types
+input AuthInput{
+    username: String!,
+    password: String!
+}
+# Mutation
+type Mutation{
+    register(requestDto: AuthInput!): AuthResponse!
+    login(requestDto: AuthInput!): AuthResponse!
+}
 # Objects / types
 scalar Date
+
+
+
+type AuthResponse{
+    username: String!,
+    token: String!
+}
 
 type User{
     userId: ID!
