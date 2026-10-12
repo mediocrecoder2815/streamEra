@@ -4,6 +4,7 @@ package pet.project.streamEra.videoDomain.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -34,5 +35,11 @@ public class Video {
             joinColumns = @JoinColumn(name = "video_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    Set<Category> categorySet= new HashSet<>();
+    Set<Category> categorySet = new HashSet<>();
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "video_status", nullable = false)
+    @ColumnDefault("PENDING")
+    VideoStatus videoStatus;
+
 }

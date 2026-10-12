@@ -9,9 +9,9 @@
 - [x] Enforce domain boundaries: ensure no direct database joins exist between distinct domains (use primitive ID references instead).
 
 ## Phase 2 — The GraphQL Edge & Security
-- [ ] Integrate Spring for GraphQL (spring-graphql) to serve data via a GraphQL API.
-- [ ] Define the GraphQL schema (`schema.graphqls`) to support querying the video catalog, user profiles, and watch history.
-- [ ] Implement JWT authentication and authorization.
+- [x] Integrate Spring for GraphQL (spring-graphql) to serve data via a GraphQL API.
+- [x] Define the GraphQL schema (`schema.graphqls`) to support querying the video catalog, user profiles, and watch history.
+- [x] Implement JWT authentication and authorization.
 - [ ] Update GraphQL controller `@QueryMapping` methods to require a valid JWT to query videos.
 - [ ] Implement a GraphQL Mutation (`updateWatchProgress`) that the video player will ping to save the user's current timestamp.
 

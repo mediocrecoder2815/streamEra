@@ -1,7 +1,32 @@
 # Operations
 type Query{
+    # Users
     users: [User!]!
-    user(userId: ID!): User
+    user(userId: ID!): User,
+
+    # Videos
+    videos: [Video!]!,
+    video(videoId: Long!): Video!,
+    videoByName(name: String): Video,
+
+    # watch history
+    watchHistory: [WatchHistory], # look up user's watch_history by username via token
+    watchHistoryByVideo(videoId: Long!): WatchHistory,
+
+}
+# Mutation
+type Mutation{
+    # auth domain
+    register(requestDto: AuthInput!): AuthResponse!
+    login(requestDto: AuthInput!): AuthResponse!
+    # user domain
+    updateUser(user: UserUpdate!): User
+    deleteUser(userId: ID!): String
+    # video domain
+    add_video(video: VideoInput): Video
+    update_video_name(name: String): Video
+    # playback domain
+    update_watch_history(watch_history: WatchHistoryInput): WatchHistory
 }
 
 # Input types
@@ -9,15 +34,38 @@ input AuthInput{
     username: String!,
     password: String!
 }
-# Mutation
-type Mutation{
-    register(requestDto: AuthInput!): AuthResponse!
-    login(requestDto: AuthInput!): AuthResponse!
+input UserUpdate{
+    username: String,
+    password: String
+}
+input VideoInput{
+    name: String!,
+    videoUrl: String!
+}
+
+input WatchHistoryInput{
+    videoId: Long,
+    date: Date,
+    timestamp: String
 }
 # Objects / types
 scalar Date
 
+scalar Long
 
+type Video{
+    videoId: Long!,
+    name: String!,
+    videoLength: Long,
+    size: Long,
+    videoUrl: String!,
+    categorySet: [Category],
+    videoStatus: String
+}
+type Category{
+    categoryId: Int!,
+    name: String!
+}
 
 type AuthResponse{
     username: String!,
@@ -36,7 +84,7 @@ type Role{
 }
 
 type WatchHistory{
-    id: ID!
+    watchHistoryId: ID!
     userId: ID!
     videoId: Int!
     date: Date!
