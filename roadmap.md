@@ -12,8 +12,8 @@
 - [x] Integrate Spring for GraphQL (spring-graphql) to serve data via a GraphQL API.
 - [x] Define the GraphQL schema (`schema.graphqls`) to support querying the video catalog, user profiles, and watch history.
 - [x] Implement JWT authentication and authorization.
-- [ ] Update GraphQL controller `@QueryMapping` methods to require a valid JWT to query videos.
-- [ ] Implement a GraphQL Mutation (`updateWatchProgress`) that the video player will ping to save the user's current timestamp.
+- [x] Update GraphQL controller `@QueryMapping` methods to require a valid JWT to query videos.
+- [x] Implement a GraphQL Mutation (`updateWatchProgress`) that the video player will ping to save the user's current timestamp.
 
 ## Phase 3 — Real Video Processing & Playback (The Streaming Engine)
 - [ ] Install FFmpeg on your local development machine.

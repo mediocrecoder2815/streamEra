@@ -6,6 +6,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import pet.project.streamEra.userDomain.dtos.WatchHistoryDto;
+import pet.project.streamEra.userDomain.dtos.WatchHistoryProgressDto;
 import pet.project.streamEra.userDomain.entity.WatchHistory;
 import pet.project.streamEra.userDomain.service.WatchHistoryService;
 
@@ -31,5 +32,10 @@ public class WatchHistoryController {
     @MutationMapping(name = "update_watch_history")
     public WatchHistory updateWatchHistory(WatchHistoryDto watchHistoryDto){
         return watchHistoryService.updateWH(watchHistoryDto);
+    }
+
+    @MutationMapping(name ="update_watch_historyProgress")
+    public WatchHistory updateProgress(@Argument(name = "updateInput") WatchHistoryProgressDto dto){
+        return watchHistoryService.updateProgress(dto);
     }
 }

@@ -31,12 +31,17 @@ type Mutation{
 
     # playback domain
     update_watch_history(watch_history: WatchHistoryInput): WatchHistory
+    update_watch_historyProgress(updateInput: WatchHistoryProgressInput): WatchHistory
 }
 
 # Input types
 input AuthInput{
     username: String!,
     password: String!
+}
+input WatchHistoryProgressInput{
+    watchHistoryId: ID!,
+    timestamp: Long!
 }
 input UserUpdate{
     username: String,

@@ -5,6 +5,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.stereotype.Service;
+import pet.project.streamEra.userDomain.dtos.WatchHistoryProgressDto;
 import pet.project.streamEra.userDomain.entity.WatchHistory;
 import pet.project.streamEra.userDomain.dtos.WatchHistoryDto;
 import pet.project.streamEra.userDomain.repository.WatchHistoryRepository;
@@ -38,5 +39,12 @@ public class WatchHistoryService {
         wh.setDate(watchHistoryDto.date());
         wh.setTimestamp(watchHistoryDto.timestamp());
         return watchHistoryRepository.save(wh);
+    }
+
+    public WatchHistory updateProgress(WatchHistoryProgressDto updateDto) {
+        WatchHistory toUpdate = watchHistoryRepository.findById(updateDto.watchHistoryId())
+                .orElseThrow(EntityNotFoundException::new);
+        toUpdate.setTimestamp(updateDto.timestamp());
+        return watchHistoryRepository.save(toUpdate);
     }
 }
