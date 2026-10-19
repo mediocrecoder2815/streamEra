@@ -3,6 +3,7 @@ package pet.project.streamEra.videoDomain.contoller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import pet.project.streamEra.videoDomain.entity.Video;
@@ -30,5 +31,8 @@ public class VideoController {
     public Video  videoByName(@Argument String name) {
         return videoService.findByName(name);
     }
-
+    @MutationMapping(name ="add_video")
+    public Video addVideo(VideoDto videoDto){
+        return videoService.addVideo(videoDto);
+    }
 }

@@ -5,12 +5,10 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pet.project.streamEra.userDomain.entity.Role;
 
 import javax.crypto.SecretKey;
 import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 import io.jsonwebtoken.Jwts;
 
 @Service

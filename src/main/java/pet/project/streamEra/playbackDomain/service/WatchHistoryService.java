@@ -7,6 +7,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Service;
 import pet.project.streamEra.playbackDomain.entity.WatchHistory;
+import pet.project.streamEra.playbackDomain.entity.WatchHistoryDto;
 import pet.project.streamEra.playbackDomain.repository.WatchHistoryRepository;
 import pet.project.streamEra.userDomain.entity.User;
 import pet.project.streamEra.userDomain.repository.UserRepository;
@@ -31,5 +32,13 @@ public class WatchHistoryService {
         User tokenOwner = userRepository.findByUsername(principal.getName()).orElseThrow(EntityNotFoundException::new);
 
         return watchHistoryRepository.findByUserIdAndVideoId(tokenOwner.getUserId(), id).orElse(null);
+    }
+
+    public WatchHistory updateWH(WatchHistoryDto watchHistoryDto) {
+        WatchHistory wh = watchHistoryRepository.findById(watchHistoryDto.videoId())
+                .orElseThrow(EntityNotFoundException::new);
+        wh.setDate(watchHistoryDto.date());
+        wh.setTimestamp(watchHistoryDto.timestamp());
+        return watchHistoryRepository.save(wh);
     }
 }

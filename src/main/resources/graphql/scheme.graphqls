@@ -44,7 +44,7 @@ input VideoInput{
 }
 
 input WatchHistoryInput{
-    videoId: Long,
+    videoId: ID!,
     date: Date,
     timestamp: String
 }
