@@ -24,7 +24,7 @@ type Mutation{
     deleteUser(userId: ID!): String
     # video domain
     add_video(video: VideoInput): Video
-    update_video_name(name: String): Video
+    update_video(video: VideoUpdateInput): Video
     # playback domain
     update_watch_history(watch_history: WatchHistoryInput): WatchHistory
 }
@@ -42,7 +42,17 @@ input VideoInput{
     name: String!,
     videoUrl: String!
 }
-
+input VideoUpdateInput{
+    videoId: ID!,
+    name: String,
+    videoUrl: String,
+    categoryList: [CategoryInput],
+    videoStatus: String
+}
+input CategoryInput{
+    categoryId: Int!,
+    name: String!
+}
 input WatchHistoryInput{
     videoId: ID!,
     date: Date,

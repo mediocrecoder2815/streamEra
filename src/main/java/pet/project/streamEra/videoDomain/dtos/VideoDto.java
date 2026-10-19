@@ -1,4 +1,4 @@
-package pet.project.streamEra.videoDomain.contoller;
+package pet.project.streamEra.videoDomain.dtos;
 
 public record VideoDto(
         String name,
