@@ -4,12 +4,12 @@ type Query{
     users: [User!]!
     user(userId: ID!): User,
 
-    # Videos
-    videos: [Video!]!,
-    video(videoId: Long!): Video!,
-    videoByName(name: String): Video,
+    # Playback
+    videos: [VideoAll!]!,
+    video_byName(name: String): Video,
+    video_byId(videoId: Long!): Video!,
 
-    # watch history
+    # Watch history
     watchHistory: [WatchHistory], # look up user's watch_history by username via token
     watchHistoryByVideo(videoId: Long!): WatchHistory,
 
@@ -19,12 +19,16 @@ type Mutation{
     # auth domain
     register(requestDto: AuthInput!): AuthResponse!
     login(requestDto: AuthInput!): AuthResponse!
+
     # user domain
     updateUser(user: UserUpdate!): User
     deleteUser(userId: ID!): String
+
     # video domain
     add_video(video: VideoInput): Video
     update_video(video: VideoUpdateInput): Video
+    delete_video(videoId: Long): String
+
     # playback domain
     update_watch_history(watch_history: WatchHistoryInput): WatchHistory
 }
@@ -72,6 +76,11 @@ type Video{
     videoUrl: String!,
     categorySet: [Category],
     videoStatus: String
+}
+type VideoAll{
+    name: String,
+    videoLength: Long,
+    categorySet: [Category]
 }
 type Category{
     categoryId: Int!,

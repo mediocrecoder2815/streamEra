@@ -36,7 +36,9 @@ public class VideoService {
     public Video addVideo(VideoDto videoDto) {
         Video newVideo = new Video();
         newVideo.setName(videoDto.name());
-        newVideo.setVideoUrl(videoDto.videoUrl());
+        // should be verified (format, size, etc...)
+        newVideo.setVideoStatus(VideoStatus.PENDING);
+
         return videoRepository.save(newVideo);
     }
 
@@ -49,6 +51,18 @@ public class VideoService {
         videoToUpdate.setVideoStatus(VideoStatus.valueOf(videoUpdateDto.videoStatus()));
 
         return videoRepository.save(videoToUpdate);
+    }
+
+    public String deleteVideo(Long videoId) {
+        Video videoToDelete = videoRepository.findById(videoId)
+                .orElse(null);
+        if(videoToDelete == null ){
+            return "NOT FOUND";
+        }
+        videoToDelete.setVideoStatus(VideoStatus.DELETED);
+        // here message should be added to query to delete video
+        videoRepository.save(videoToDelete);
+        return "OK";
     }
 }
 

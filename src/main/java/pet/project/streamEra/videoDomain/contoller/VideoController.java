@@ -18,20 +18,6 @@ import java.util.List;
 public class VideoController {
     private final VideoService videoService;
 
-    @QueryMapping(name = "videos")
-    public List<Video> videos() {
-        return videoService.findAllVideos();
-    }
-
-    @QueryMapping(name = "video")
-    public Video video(@Argument Long videoId) {
-        return videoService.findById(videoId);
-    }
-
-    @QueryMapping(name = "videoByName")
-    public Video  videoByName(@Argument String name) {
-        return videoService.findByName(name);
-    }
     @MutationMapping(name ="add_video")
     public Video addVideo(VideoDto videoDto){
         return videoService.addVideo(videoDto);
@@ -39,5 +25,10 @@ public class VideoController {
     @MutationMapping(name = "update_video")
     public Video updateVideoName(VideoUpdateDto videoUpdateDto){
         return videoService.updateVideo(videoUpdateDto);
+    }
+
+    @MutationMapping(name ="delete_video")
+    public String deleteVideo(@Argument Long videoId){
+        return videoService.deleteVideo(videoId);
     }
 }
