@@ -6,6 +6,6 @@ import java.util.UUID;
 public record WatchHistoryDto(
         UUID videoId,
         Instant date,
-        String timestamp
+        Long timestamp
 ) {
 }

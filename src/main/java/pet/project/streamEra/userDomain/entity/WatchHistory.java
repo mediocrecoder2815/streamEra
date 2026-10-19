@@ -1,4 +1,4 @@
-package pet.project.streamEra.playbackDomain.entity;
+package pet.project.streamEra.userDomain.entity;
 
 
 import jakarta.persistence.*;
@@ -10,8 +10,11 @@ import org.hibernate.annotations.DynamicInsert;
 import java.time.Instant;
 import java.util.UUID;
 
-@Entity(name = "watch_history")
+@Entity
 @Setter
+@Table(name = "watch_history", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"user_id", "video_id"})
+})
 @Getter
 @DynamicInsert
 public class WatchHistory {
@@ -28,7 +31,7 @@ public class WatchHistory {
     @Column(name= "date")
     private Instant date;
 
-    @Column(name = "timestamp")
-    @ColumnDefault(value = "00:00:00")
-    private String timestamp;
+    @Column(name = "playback_position_seconds")
+    @ColumnDefault(value = "0")
+    private Long timestamp;
 }

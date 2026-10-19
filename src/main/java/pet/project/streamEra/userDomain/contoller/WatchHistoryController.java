@@ -1,14 +1,13 @@
-package pet.project.streamEra.playbackDomain.controller;
-
+package pet.project.streamEra.userDomain.contoller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
-import pet.project.streamEra.playbackDomain.entity.WatchHistory;
 import pet.project.streamEra.playbackDomain.entity.WatchHistoryDto;
-import pet.project.streamEra.playbackDomain.service.WatchHistoryService;
+import pet.project.streamEra.userDomain.entity.WatchHistory;
+import pet.project.streamEra.userDomain.service.WatchHistoryService;
 
 import java.security.Principal;
 import java.util.List;
