@@ -1,4 +1,4 @@
-package pet.project.streamEra.playbackDomain.repository;
+package pet.project.streamEra.userDomain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

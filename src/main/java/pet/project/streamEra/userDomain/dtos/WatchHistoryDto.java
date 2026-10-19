@@ -1,4 +1,4 @@
-package pet.project.streamEra.playbackDomain.entity;
+package pet.project.streamEra.userDomain.dtos;
 
 import java.time.Instant;
 import java.util.UUID;

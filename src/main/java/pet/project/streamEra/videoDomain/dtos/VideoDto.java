@@ -2,6 +2,7 @@ package pet.project.streamEra.videoDomain.dtos;
 
 public record VideoDto(
         String name,
-        String videoUrl
+        String format,
+        Long size
 ) {
 }

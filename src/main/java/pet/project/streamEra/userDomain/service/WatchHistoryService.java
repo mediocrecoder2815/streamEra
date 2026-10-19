@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.stereotype.Service;
 import pet.project.streamEra.userDomain.entity.WatchHistory;
-import pet.project.streamEra.playbackDomain.entity.WatchHistoryDto;
-import pet.project.streamEra.playbackDomain.repository.WatchHistoryRepository;
+import pet.project.streamEra.userDomain.dtos.WatchHistoryDto;
+import pet.project.streamEra.userDomain.repository.WatchHistoryRepository;
 import pet.project.streamEra.userDomain.entity.User;
 import pet.project.streamEra.userDomain.repository.UserRepository;
 

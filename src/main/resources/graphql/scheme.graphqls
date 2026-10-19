@@ -40,7 +40,8 @@ input UserUpdate{
 }
 input VideoInput{
     name: String!,
-    videoUrl: String!
+    format: String!,
+    size: Long
 }
 input VideoUpdateInput{
     videoId: ID!,

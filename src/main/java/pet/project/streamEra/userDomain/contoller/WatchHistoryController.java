@@ -5,7 +5,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
-import pet.project.streamEra.playbackDomain.entity.WatchHistoryDto;
+import pet.project.streamEra.userDomain.dtos.WatchHistoryDto;
 import pet.project.streamEra.userDomain.entity.WatchHistory;
 import pet.project.streamEra.userDomain.service.WatchHistoryService;
 
