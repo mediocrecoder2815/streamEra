@@ -22,8 +22,9 @@ public class VideoController {
     public Video addVideo(VideoDto videoDto){
         return videoService.addVideo(videoDto);
     }
+
     @MutationMapping(name = "update_video")
-    public Video updateVideoName(VideoUpdateDto videoUpdateDto){
+    public Video updateVideoName(@Argument VideoUpdateDto videoUpdateDto){
         return videoService.updateVideo(videoUpdateDto);
     }
 

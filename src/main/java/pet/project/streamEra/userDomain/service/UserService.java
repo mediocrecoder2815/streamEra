@@ -44,7 +44,7 @@ public class UserService {
     public String deleteUser(UUID userID, Principal principal) {
         User userToken = userRepository.findByUsername(principal.getName()).orElseThrow(EntityNotFoundException::new);
         User deletedUser = userRepository.findById(userID).orElseThrow(EntityNotFoundException::new);
-        if(!userToken.getUsername().equals(deletedUser.getUsername()) && userToken.getRole().getName().equals("ADMIN")) {
+        if(!userToken.getUsername().equals(deletedUser.getUsername()) && !userToken.getRole().getName().equals("ADMIN")) {
             return "Not Allowed";
         }
         userRepository.delete(deletedUser);

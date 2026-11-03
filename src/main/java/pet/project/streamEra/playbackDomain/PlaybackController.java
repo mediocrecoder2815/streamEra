@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PlaybackController {
     private final PlaybackService playbackService;
+
     @QueryMapping(name = "video_byId")
     public Video getVideoById(@Argument Long videoId){
         return playbackService.getVideoById(videoId);

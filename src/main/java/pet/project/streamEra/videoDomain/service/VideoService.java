@@ -19,11 +19,6 @@ import java.util.Set;
 public class VideoService {
     private final VideoRepository videoRepository;
     private final CategoryRepository categoryRepository;
-    private final Set<VideoStatus> statusSet = Set.of(VideoStatus.DELETED, VideoStatus.OK,
-                                        VideoStatus.ERROR, VideoStatus.PENDING);
-    public List<Video> findAllVideos() {
-        return videoRepository.findAll();
-    }
 
     public Video findById(Long id) {
         return videoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
@@ -35,7 +30,11 @@ public class VideoService {
 
     public Video addVideo(VideoDto videoDto) {
         Video newVideo = new Video();
+        if(videoDto.name().isEmpty() || videoDto.format().isEmpty()){
+            throw new IllegalArgumentException();
+        }
         newVideo.setName(videoDto.name());
+
         // should be verified (format, size, etc...)
         newVideo.setVideoStatus(VideoStatus.PENDING);
 
@@ -45,7 +44,9 @@ public class VideoService {
     public Video updateVideo(VideoUpdateDto videoUpdateDto) {
         Video videoToUpdate = videoRepository.findById(videoUpdateDto.videoId())
                 .orElseThrow(EntityNotFoundException::new);
-        videoToUpdate.getCategorySet().addAll(videoUpdateDto.categoryList());
+        if (videoUpdateDto.categoryList() != null) {
+            videoToUpdate.getCategorySet().addAll(videoUpdateDto.categoryList());
+        }
         videoToUpdate.setName(videoUpdateDto.name());
         videoToUpdate.setVideoUrl(videoUpdateDto.videoUrl());
         videoToUpdate.setVideoStatus(VideoStatus.valueOf(videoUpdateDto.videoStatus()));
