@@ -19,7 +19,7 @@ public class VideoController {
     private final VideoService videoService;
 
     @MutationMapping(name ="add_video")
-    public Video addVideo(VideoDto videoDto){
+    public Video addVideo(@Argument VideoDto videoDto){
         return videoService.addVideo(videoDto);
     }
 

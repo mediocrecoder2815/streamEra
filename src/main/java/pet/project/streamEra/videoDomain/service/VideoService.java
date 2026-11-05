@@ -3,22 +3,26 @@ package pet.project.streamEra.videoDomain.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
+import pet.project.streamEra.configs.RabbitMqConfig;
 import pet.project.streamEra.videoDomain.dtos.VideoDto;
 import pet.project.streamEra.videoDomain.dtos.VideoUpdateDto;
 import pet.project.streamEra.videoDomain.entity.Video;
 import pet.project.streamEra.videoDomain.entity.VideoStatus;
+import pet.project.streamEra.videoDomain.rabbitmq.VideoMessageSender;
 import pet.project.streamEra.videoDomain.repository.CategoryRepository;
 import pet.project.streamEra.videoDomain.repository.VideoRepository;
-
-import java.util.List;
-import java.util.Set;
 
 @Service
 @AllArgsConstructor
 public class VideoService {
     private final VideoRepository videoRepository;
     private final CategoryRepository categoryRepository;
+    private final VideoMessageSender videoMessageSender;
+
+    private final String URL = "/raw/";
+    private final String FILENAME = "source";
 
     public Video findById(Long id) {
         return videoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
@@ -28,17 +32,43 @@ public class VideoService {
         return videoRepository.findByName(name).orElseThrow(EntityNotFoundException::new);
     }
 
+
+    // checks video metadata,
+    // then create key -> /raw/{videoId}/source.mp4
+    // return video with 'PENDING' status
     public Video addVideo(VideoDto videoDto) {
         Video newVideo = new Video();
-        if(videoDto.name().isEmpty() || videoDto.format().isEmpty()){
+        if(videoDto.name().isEmpty() || videoDto.format().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        if (videoDto.size() > 2_000_000_000L){
             throw new IllegalArgumentException();
         }
         newVideo.setName(videoDto.name());
-
-        // should be verified (format, size, etc...)
+        newVideo.setSize(0L);
+        newVideo.setVideoLength(0L);
         newVideo.setVideoStatus(VideoStatus.PENDING);
 
-        return videoRepository.save(newVideo);
+        newVideo = videoRepository.save(newVideo);
+        String key = URL.concat(newVideo.getVideoId().toString())
+                .concat(FILENAME)
+                .concat(".")
+                .concat(videoDto.format());
+        videoMessageSender.sendMessage(RabbitMqConfig.ROUTING_KEY_GENERAL_MESSAGE, key);
+
+        return newVideo;
+    }
+
+    // received processed video key, new key == new video url
+    // changes original video url and status
+    @RabbitListener(queues = RabbitMqConfig.QUEUE)
+    public void receiveMessage(String message) {
+        System.out.println("Received <" + message + ">");
+        String[] split = message.split("/"); // should be /hls/{videoId}/...
+        Long id = Long.valueOf(split[1]);
+        Video video = findById(id);
+        video.setVideoStatus(VideoStatus.OK);
+        videoRepository.save(video);
     }
 
     public Video updateVideo(VideoUpdateDto videoUpdateDto) {

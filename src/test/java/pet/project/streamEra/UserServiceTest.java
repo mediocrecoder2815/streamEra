@@ -193,13 +193,6 @@ class UserServiceTest {
         verify(userRepository, never()).delete(any(User.class));
     }
 
-    // The two tests below describe the INTENDED permission policy, but they are
-    // disabled because deleteUser's condition is inverted:
-    //   !isSelf && isAdmin  -> "Not Allowed"   (admin blocked, non-admin allowed)
-    // It should be:
-    //   !isSelf && !isAdmin -> "Not Allowed"
-    // Remove @Disabled once the service is fixed.
-
     @Test
     @DisplayName("deleteUser: an admin can delete another user")
     void deleteUser_allowsAdminToDeleteOthers() {

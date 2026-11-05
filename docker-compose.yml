@@ -16,6 +16,14 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+  RabbitMQ:
+    container_name: 'message-q'
+    image: 'rabbitmq:latest'
+    environment:
+      - 'RABBITMQ_DEFAULT_PASS=secret'
+      - 'RABBITMQ_DEFAULT_USER=myuser'
+    ports:
+      - '5672:5672'
 
 volumes:
   db_data:

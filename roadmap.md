@@ -16,7 +16,7 @@
 - [x] Implement a GraphQL Mutation (`updateWatchProgress`) that the video player will ping to save the user's current timestamp.
 
 ## Phase 3 — Real Video Processing & Playback (The Streaming Engine)
-- [ ] Install FFmpeg on your local development machine.
+- [x] Install FFmpeg on your local development machine.
 - [ ] Write Java logic using `ProcessBuilder` to execute an FFmpeg command that slices raw `.mp4` files into `.ts` chunks with an `.m3u8` playlist.
 - [ ] Expose a dedicated HTTP endpoint in the monolith to serve generated static `.m3u8` and `.ts` files directly over standard HTTP.
 - [ ] Create a basic `index.html` file using `hls.js` to physically test browser playback and verify the GraphQL mutation ping.
