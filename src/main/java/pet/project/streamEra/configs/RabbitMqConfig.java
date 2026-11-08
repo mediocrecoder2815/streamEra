@@ -22,7 +22,7 @@ public class RabbitMqConfig {
 
         @Bean
         public Queue queueConsumer() {
-            return new Queue(QUEUE, false);
+            return new Queue(QUEUE);
         }
 
         @Bean

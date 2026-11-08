@@ -21,7 +21,7 @@ public class VideoService {
     private final CategoryRepository categoryRepository;
     private final VideoMessageSender videoMessageSender;
 
-    private final String URL = "/raw/";
+    private final String URL = "raw/";
     private final String FILENAME = "source";
 
     public Video findById(Long id) {

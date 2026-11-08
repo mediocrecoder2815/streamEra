@@ -13,6 +13,7 @@ import java.util.ArrayDeque;
 public class VideoMessageSender {
 
     private RabbitTemplate rabbitTemplate;
+
     public void sendMessage(String routingKey, String message) {
         rabbitTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE_NAME, routingKey, message);
     }
