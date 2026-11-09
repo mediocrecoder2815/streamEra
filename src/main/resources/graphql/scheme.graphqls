@@ -25,10 +25,10 @@ type Mutation{
     deleteUser(userId: ID!): String
 
     # video domain
-    add_video(video: VideoInput): Video
+    add_video(video: VideoInput): String
     update_video(video: VideoUpdateInput): Video
     delete_video(videoId: Long): String
-
+    confirm(videoId: Long): String
     # playback domain
     update_watch_history(watch_history: WatchHistoryInput): WatchHistory
     update_watch_historyProgress(updateInput: WatchHistoryProgressInput): WatchHistory
@@ -49,7 +49,6 @@ input UserUpdate{
 }
 input VideoInput{
     name: String!,
-    format: String!,
     size: Long
 }
 input VideoUpdateInput{

@@ -36,16 +36,10 @@ public class VideoService {
     // checks video metadata,
     // then create key -> /raw/{videoId}/source.mp4
     // return video with 'PENDING' status
-    public Video addVideo(VideoDto videoDto) {
+    public String addVideo(VideoDto videoDto) {
         Video newVideo = new Video();
-        if(videoDto.name().isEmpty() || videoDto.format().isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        if (videoDto.size() > 2_000_000_000L){
-            throw new IllegalArgumentException();
-        }
         newVideo.setName(videoDto.name());
-        newVideo.setSize(0L);
+        newVideo.setSize(videoDto.size()); // initial size (verify after upload)
         newVideo.setVideoLength(0L);
         newVideo.setVideoStatus(VideoStatus.PENDING);
 
@@ -53,10 +47,8 @@ public class VideoService {
         String key = URL.concat(newVideo.getVideoId().toString())
                 .concat(FILENAME)
                 .concat(".")
-                .concat(videoDto.format());
-        videoMessageSender.sendMessage(RabbitMqConfig.ROUTING_KEY_GENERAL_MESSAGE, key);
-
-        return newVideo;
+                .concat("mp4");
+        return URL + key;
     }
 
     // received processed video key, new key == new video url
@@ -67,9 +59,17 @@ public class VideoService {
         String[] split = message.split("/"); // should be /hls/{videoId}/...
         Long id = Long.valueOf(split[1]);
         Video video = findById(id);
-        video.setVideoStatus(VideoStatus.OK);
         videoRepository.save(video);
     }
+
+
+//    // checks if processed video is avaliable
+//    private void checkVideoAvailablity(Long videoId){
+//
+//        String url = String.join("/", "hls", videoId.toString(), "index.m3u8");
+//
+//    }
+
 
     public Video updateVideo(VideoUpdateDto videoUpdateDto) {
         Video videoToUpdate = videoRepository.findById(videoUpdateDto.videoId())
@@ -94,6 +94,14 @@ public class VideoService {
         // here message should be added to query to delete video
         videoRepository.save(videoToDelete);
         return "OK";
+    }
+
+    // confirms that video was uploaded
+    public String confirm(Long videoId) {
+        String url = String.join("/", "raw", videoId.toString(), "source.mp4");
+
+
+        return null;
     }
 }
 

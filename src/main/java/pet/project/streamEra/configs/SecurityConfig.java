@@ -30,6 +30,8 @@ public class SecurityConfig {
                                 requestMatchers("/graphql", "/graphiql").permitAll().
                         requestMatchers("/**/graphiql").permitAll().
                         requestMatchers("/api/auth/**").permitAll().
+                        requestMatchers("/", "/index.html", "/favicon.ico",
+                                "/css/**", "/js/**", "/media/**", "/error").permitAll().
                         anyRequest().hasAnyRole("ADMIN", "USER"))
                 .addFilterBefore(jwtAuthentiactionFillter, UsernamePasswordAuthenticationFilter.class)
                 .build();

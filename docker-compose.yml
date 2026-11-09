@@ -24,6 +24,44 @@ services:
       - 'RABBITMQ_DEFAULT_USER=myuser'
     ports:
       - '5672:5672'
+  minio:
+    image: cgr.dev/chainguard/minio:latest
+    container_name: streamera-minio
+    command: server /data --console-address ":9001"
+    environment:
+      # Demo credentials only. Change these before exposing the service.
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    ports:
+      - "9000:9000"  # S3 API
+      - "9001:9001"  # web console
+    volumes:
+      - minio_data:/data
+  minio-init:
+    image: cgr.dev/chainguard/minio:latest
+    container_name: streamera-minio-init
+    depends_on:
+      - minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+      MINIO_BUCKET: ${MINIO_BUCKET:-streamera-bucket}
+      MC_CONFIG_DIR: /tmp/.mc
+    entrypoint: >
+      /bin/sh -c "
+      until /usr/bin/mc alias set local http://minio:9000 '${MINIO_ROOT_USER:-minioadmin}' '${MINIO_ROOT_PASSWORD:-minioadmin}'; do
+        echo 'waiting for MinIO...';
+        sleep 2;
+      done;
+      until /usr/bin/mc mb --ignore-existing local/'${MINIO_BUCKET:-streamera-bucket}'; do
+        echo 'creating bucket...';
+        sleep 2;
+      done;
+      /usr/bin/mc anonymous set download local/'${MINIO_BUCKET:-streamera-bucket}';
+      echo 'MinIO bucket ready: ${MINIO_BUCKET:-streamera-bucket}';
+      "
+    restart: "no"
 
 volumes:
   db_data:
+  minio_data:

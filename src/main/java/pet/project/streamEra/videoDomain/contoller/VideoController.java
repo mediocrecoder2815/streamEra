@@ -19,7 +19,7 @@ public class VideoController {
     private final VideoService videoService;
 
     @MutationMapping(name ="add_video")
-    public Video addVideo(@Argument VideoDto videoDto){
+    public String addVideo(@Argument VideoDto videoDto){
         return videoService.addVideo(videoDto);
     }
 
@@ -31,5 +31,10 @@ public class VideoController {
     @MutationMapping(name ="delete_video")
     public String deleteVideo(@Argument Long videoId){
         return videoService.deleteVideo(videoId);
+    }
+
+    @MutationMapping(name = "confirm")
+    public String confirm(@Argument Long videoId){
+        return videoService.confirm(videoId);
     }
 }

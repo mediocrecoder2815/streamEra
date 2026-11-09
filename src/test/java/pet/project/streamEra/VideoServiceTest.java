@@ -13,6 +13,7 @@ import pet.project.streamEra.videoDomain.dtos.VideoDto;
 import pet.project.streamEra.videoDomain.dtos.VideoUpdateDto;
 import pet.project.streamEra.videoDomain.entity.Video;
 import pet.project.streamEra.videoDomain.entity.VideoStatus;
+import pet.project.streamEra.videoDomain.rabbitmq.VideoMessageSender;
 import pet.project.streamEra.videoDomain.repository.CategoryRepository;
 import pet.project.streamEra.videoDomain.repository.VideoRepository;
 import pet.project.streamEra.videoDomain.service.VideoService;
@@ -35,11 +36,14 @@ public class VideoServiceTest {
     @Mock
     private CategoryRepository categoryRepository;
 
+    @Mock
+    private VideoMessageSender videoMessageSender;
+
     private VideoService videoService;
 
     @BeforeEach
     void setUp(){
-        videoService = new VideoService(videoRepository, categoryRepository);
+        videoService = new VideoService(videoRepository, categoryRepository, videoMessageSender);
 
 
     }

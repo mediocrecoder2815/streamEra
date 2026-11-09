@@ -6,11 +6,12 @@ package worker;
     Worker service responsible for proccessing/uploading video from client
     Once received message from videoService:
         - downloads video from S3 bucker slices it into chunks, send back to S3
-        - sends message videoId and new status once done
+        - sends message once processed
+        - message ex. hls/{videoID}/index.m3u8
 */
 
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.util.Strings;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.ResponseInputStream;
@@ -32,6 +33,7 @@ import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class VideoUploadService {
     private final S3Client s3Client;
     private final AwsProperties properties;
@@ -40,6 +42,10 @@ public class VideoUploadService {
 
     @RabbitListener(queues = RabbitMqConfig.QUEUE)
     public void handleMessage(String message) throws IOException, InterruptedException {
+        log.info("S3 endpoint={}, bucket={}, pathStyle={}",
+                properties.endpoint(),
+                properties.s3().bucket(),
+                properties.pathStyle());
         String[] values = message.split("/");
         if (values.length < 3) {
             throw new IllegalArgumentException("Wrong amount of args");
@@ -52,7 +58,7 @@ public class VideoUploadService {
         Path outputDir = processVideoHLS(orgVideo);
         // upload new video chunks
         uploadS3Objects(outputDir, id);
-        String response = "/raw/" + id + '/' + "index.m3u8";
+        String response = "hls/" + id + '/' + "index.m3u8";
         messageSender.sendMessage(RabbitMqConfig.ROUTING_KEY_GENERAL_MESSAGE, response);
 
     }
@@ -60,7 +66,6 @@ public class VideoUploadService {
     private Path getS3Object(String bucket, String key) {
         try{
             Path input = Files.createTempFile("worker-input-", ".mp4");
-
             GetObjectRequest request = GetObjectRequest.builder()
                     .bucket(bucket)
                     .key(key)
@@ -89,7 +94,6 @@ public class VideoUploadService {
         pb.redirectErrorStream(true);
         pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
         Process process = pb.start();
-        String FfmpegOutput;
         boolean finished = process.waitFor(20, TimeUnit.MINUTES);
         if (!finished) {
             process.destroyForcibly();
