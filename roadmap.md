@@ -89,9 +89,9 @@
 - [x] Remove the immediate publish from `addVideo`; right now it enqueues before any upload can happen.
 - [x] Mutation creates a `PENDING` row and returns a **presigned PUT URL**; it does **not** enqueue anything.
 - [ ] Upload the file directly to MinIO with `curl` first, not the browser.
-- [ ] Add a confirm mutation that `HEAD`s the object, checks size/format, sets `PROCESSING`, and publishes `video.uploaded`.
-- [ ] Reject missing, zero-byte, or wrong-type objects before enqueueing.
-- [ ] Configure MinIO CORS for the browser origin when you move to the frontend.
+- [x] Add a confirm mutation that `HEAD`s the object, checks size/format, sets `PROCESSING`, and publishes `video.uploaded`.
+- [x] Reject missing, zero-byte, or wrong-type objects before enqueueing.
+- [x] Configure MinIO CORS for the browser origin when you move to the frontend.
 
 **Done when:** an object exists in `raw/`, the row is `PROCESSING`, and one `video.uploaded` message is visible in RabbitMQ.
 
@@ -99,9 +99,9 @@
 
 ### 3.3 Worker — do the slow work
 
-- [ ] Worker consumes the upload event, downloads the raw object, and runs ffmpeg.
-- [ ] Worker uploads the generated HLS files back to storage.
-- [ ] Verify the output directory contains `index.m3u8` and at least one `.ts` segment before publishing anything.
+- [x] Worker consumes the upload event, downloads the raw object, and runs ffmpeg.
+- [x] Worker uploads the generated HLS files back to storage.
+- [x] Verify the output directory contains `index.m3u8` and at least one `.ts` segment before publishing anything.
 - [ ] Upload segments first, playlist last, so a visible playlist never points at missing segments.
 - [ ] Replace the plain string message with a structured success event: `video.processed { videoId, playlistKey }`.
 - [ ] Publish `video.failed { videoId, reason }` on every processing error.

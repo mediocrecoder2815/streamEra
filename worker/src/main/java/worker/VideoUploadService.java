@@ -41,26 +41,40 @@ public class VideoUploadService {
     private final String prefix = "hls";
 
     @RabbitListener(queues = RabbitMqConfig.QUEUE)
-    public void handleMessage(String message) throws IOException, InterruptedException {
+    public void handleMessage(VideoEvent videoEvent) {
         log.info("S3 endpoint={}, bucket={}, pathStyle={}",
                 properties.endpoint(),
                 properties.s3().bucket(),
                 properties.pathStyle());
-        String[] values = message.split("/");
-        if (values.length < 3) {
-            throw new IllegalArgumentException("Wrong amount of args");
+        if (videoEvent == null) {
+            throw new IllegalStateException("videoEvent is null");
         }
-        String id  = values[1];
-        // downloading video
-        System.out.format("Downloading %s from S3 bucket %s...\n",message, properties.s3().bucket());
-        Path orgVideo = getS3Object(properties.s3().bucket(), message);
-        // proccesing it
-        Path outputDir = processVideoHLS(orgVideo);
-        // upload new video chunks
-        uploadS3Objects(outputDir, id);
-        String response = "hls/" + id + '/' + "index.m3u8";
-        messageSender.sendMessage(RabbitMqConfig.ROUTING_KEY_GENERAL_MESSAGE, response);
+        if (!"upload".equals(videoEvent.type())) {
+            log.warn("Ignoring non-upload event: {}", videoEvent);
+            return;
+        }
 
+        Long videoId = videoEvent.videoId();
+        try {
+            String url = videoEvent.message();
+            // downloading video
+            System.out.format("Downloading %s from S3 bucket %s...\n", url, properties.s3().bucket());
+            Path orgVideo = getS3Object(properties.s3().bucket(), url);
+            // processing it
+            Path outputDir = processVideoHLS(orgVideo);
+            // upload new video chunks
+            uploadS3Objects(outputDir, videoId.toString());
+
+            String message = "hls/" + videoId + '/' + "index.m3u8";
+            var response = new VideoEvent(videoId, message, "processed");
+            messageSender.sendMessage(RabbitMqConfig.ROUTING_KEY_PROCESSED, response);
+        } catch (Exception e) {
+            log.error("Failed to process video {}", videoId, e);
+            messageSender.sendMessage(
+                    RabbitMqConfig.ROUTING_KEY_FAILED,
+                    new VideoEvent(videoId, e.getMessage(), "failed")
+            );
+        }
     }
     // return path of saved file
     private Path getS3Object(String bucket, String key) {
@@ -108,33 +122,52 @@ public class VideoUploadService {
     }
 
     private void uploadS3Objects(Path inputDir, String videoId) throws IOException {
-        try (Stream<Path> files = Files.list(inputDir)) {
-            System.out.println("Started processing video");
-            files.filter(Files::isRegularFile)
-                    .forEach(file -> {
-                        System.out.println("Processing file: " + file.getFileName().toString());
-                        String fileName = file.getFileName().toString();
-                        String objectKey = String.join("/", prefix, videoId, fileName);
+        if (checkFiles(inputDir)){
+            try (Stream<Path> files = Files.list(inputDir)) {
+                System.out.println("Started processing video");
+                files.filter(Files::isRegularFile)
+                        .forEach(file -> {
+                            System.out.println("Processing file: " + file.getFileName().toString());
+                            String fileName = file.getFileName().toString();
+                            String objectKey = String.join("/", prefix, videoId, fileName);
 
-                        if(file.getFileName().toString().endsWith(".m3u8")) {
-                            this.s3Client.putObject(PutObjectRequest.builder().
+                            if(file.getFileName().toString().endsWith(".m3u8")) {
+                                this.s3Client.putObject(PutObjectRequest.builder().
                                         bucket(properties.s3().bucket())
                                         .contentType("application/vnd.apple.mpegurl").
                                         key(objectKey).build(), file);
-                        }
-                        else if(file.getFileName().toString().endsWith(".ts")) {
-                            this.s3Client.putObject(PutObjectRequest.builder().
+                            }
+                            else if(file.getFileName().toString().endsWith(".ts")) {
+                                this.s3Client.putObject(PutObjectRequest.builder().
                                         bucket(properties.s3().bucket()).
                                         contentType("video/mp2t").
                                         key(objectKey).build(), file);
 
-                        }
-                        else{
-                            System.out.println("Skipping file: " + file.getFileName().toString());
-                        }
-                        // file is one .ts segment or the .m3u8 playlist
-                    });
+                            }
+                            else{
+                                System.out.println("Skipping file: " + file.getFileName().toString());
+                            }
+                            // file is one .ts segment or the .m3u8 playlist
+                        });
+            }
         }
-    }
+            else{
+                throw new IllegalArgumentException("No files found in directory " + inputDir.toString());
+            }
+        }
 
+    private boolean checkFiles(Path inputDir) throws IOException {
+        try (Stream<Path> files = Files.list(inputDir)) {
+            var fileList =  files
+                    .filter(f -> {
+                        String name = f.getFileName().toString();
+                        return name.endsWith(".m3u8") || name.endsWith(".ts");
+                    })
+                    .toList();
+            if(fileList.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

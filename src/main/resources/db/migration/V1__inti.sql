@@ -4,7 +4,7 @@ CREATE TABLE roles(
 );
 CREATE TABLE videos(
     video_id BIGSERIAL primary key,
-    name TEXT unique not null,
+    name TEXT not null,
     video_length int not null,
     size bigint not null,
     video_url TEXT NOT NULL

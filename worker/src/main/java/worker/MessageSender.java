@@ -12,7 +12,7 @@ public class MessageSender {
 
     private RabbitTemplate rabbitTemplate;
 
-    public void sendMessage(String routingKey, String message) {
-        rabbitTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE_NAME, routingKey, message);
+    public void sendMessage(String routingKey, VideoEvent event) {
+        rabbitTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE_NAME, routingKey, event);
     }
 }

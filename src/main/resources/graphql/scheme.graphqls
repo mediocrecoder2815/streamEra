@@ -8,6 +8,7 @@ type Query{
     videos: [VideoAll!]!,
     video_byName(name: String): Video,
     video_byId(videoId: Long!): Video!,
+    video_status(videoId: Long!): String,
 
     # Watch history
     watchHistory: [WatchHistory], # look up user's watch_history by username via token
@@ -25,7 +26,7 @@ type Mutation{
     deleteUser(userId: ID!): String
 
     # video domain
-    add_video(video: VideoInput): String
+    add_video(video: VideoInput): UploadTicket!
     update_video(video: VideoUpdateInput): Video
     delete_video(videoId: Long): String
     confirm(videoId: Long): String
@@ -85,6 +86,13 @@ type VideoAll{
     name: String,
     videoLength: Long,
     categorySet: [Category]
+}
+type UploadTicket{
+    videoId: Long!
+    objectKey: String!
+    uploadUrl: String!
+    contentType: String!
+    expiresInSeconds: Int!
 }
 type Category{
     categoryId: Int!,

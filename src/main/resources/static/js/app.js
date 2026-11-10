@@ -9,6 +9,9 @@ const API_URL = "/graphql";
 const DEMO_SRC = "/media/demo.mp4";
 const LS_TOKEN = "streamera.token";
 const LS_USER = "streamera.username";
+const MAX_UPLOAD_BYTES = 2_000_000_000; // 2 GB decimal, matches the backend limit
+const UPLOAD_POLL_ATTEMPTS = 90; // 90 * 2s = 3 minutes
+const UPLOAD_POLL_INTERVAL_MS = 2000;
 
 const viewEl = document.getElementById("view");
 
@@ -111,6 +114,17 @@ function synopsis(video) {
   return `${genre} — a demo title from the StreamEra catalog. Sign in to keep your watch history and playback progress in sync.`;
 }
 
+function videoStatusLabel(status) {
+  const key = String(status || "").toUpperCase();
+  return {
+    PENDING: "Processing",
+    PROCESSING: "Processing",
+    OK: "Ready",
+    ERROR: "Failed",
+    DELETED: "Deleted",
+  }[key] || key || "Unknown";
+}
+
 /* ------------------------------------------------------------------ */
 /* GraphQL                                                            */
 /* ------------------------------------------------------------------ */
@@ -191,6 +205,7 @@ function renderHeader() {
       <nav class="nav" aria-label="Primary">
         <a class="nav-link" data-nav="browse" href="#/">Browse</a>
         <a class="nav-link" data-nav="history" href="#/history">Watch history</a>
+        <a class="nav-link" data-nav="upload" href="#/upload">Upload</a>
       </nav>
       <div class="topbar-tools">
         <label class="search-wrap">
@@ -397,6 +412,259 @@ function errorState(title, message, retryId) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Upload                                                             */
+/* ------------------------------------------------------------------ */
+
+function isMp4File(file) {
+  return file.type === "video/mp4" || /\.mp4$/i.test(file.name || "");
+}
+
+function putFile(url, file, contentType, onProgress) {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open("PUT", url);
+    request.setRequestHeader("Content-Type", contentType);
+
+    request.upload.addEventListener("progress", (event) => {
+      if (event.lengthComputable) onProgress(event.loaded / event.total);
+    });
+
+    request.addEventListener("load", () => {
+      if (request.status >= 200 && request.status < 300) {
+        resolve();
+      } else {
+        reject(new Error(`Storage upload failed (HTTP ${request.status}). Check the MinIO/S3 CORS configuration.`));
+      }
+    });
+    request.addEventListener("error", () => {
+      reject(new Error("Storage upload failed. Check that the presigned URL is reachable and CORS allows PUT."));
+    });
+    request.addEventListener("abort", () => reject(new Error("Upload cancelled.")));
+
+    request.send(file);
+  });
+}
+
+async function pollVideoStatus(videoId, gen, onUpdate) {
+  for (let attempt = 0; attempt < UPLOAD_POLL_ATTEMPTS; attempt += 1) {
+    if (gen !== generation) return "cancelled";
+
+    try {
+      const data = await gql(
+        `query($id: Long!) { video_status(videoId: $id) }`,
+        { id: videoId },
+      );
+      const status = String(data.video_status || "").toUpperCase();
+      if (status === "OK") return "OK";
+      if (status === "ERROR" || status === "DELETED") return status;
+      onUpdate(`Processing… ${Math.round(((attempt + 1) * UPLOAD_POLL_INTERVAL_MS) / 1000)}s`);
+    } catch (error) {
+      if (attempt === 0) onUpdate("Waiting for the processing worker…");
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, UPLOAD_POLL_INTERVAL_MS));
+  }
+  return "TIMEOUT";
+}
+
+async function renderUpload(gen) {
+  if (!state.token) {
+    viewEl.innerHTML = `
+      <section class="empty-state">
+        <span class="empty-icon">⬆️</span>
+        <h1>Upload a video</h1>
+        <p>Sign in before uploading so the catalog can attribute the title to your account.</p>
+        <button class="btn primary" data-open-auth="login">Sign in</button>
+      </section>
+    `;
+    return;
+  }
+
+  viewEl.innerHTML = `
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Creator tools</p>
+        <h1>Upload a video</h1>
+        <p class="muted">MP4 only, up to 2 GB. The worker converts it to HLS before it appears in playback.</p>
+      </div>
+      <a class="btn ghost small" href="#/">Back to catalog</a>
+    </div>
+
+    <section class="upload-panel">
+      <form id="upload-form" class="auth-form">
+        <label class="field">
+          <span>Title</span>
+          <input name="title" id="upload-title" required maxlength="120" placeholder="My first stream">
+        </label>
+        <label class="field">
+          <span>Video file</span>
+          <input name="file" id="upload-file" type="file" accept="video/mp4,.mp4" required>
+        </label>
+        <p class="hint" id="upload-file-meta">Choose an MP4 file.</p>
+        <div class="upload-meter hidden" id="upload-meter" aria-hidden="true"><span></span></div>
+        <p class="form-error hidden" id="upload-error"></p>
+        <p class="notice hidden" id="upload-status"></p>
+        <div class="upload-actions">
+          <button class="btn primary" type="submit" id="upload-submit">Upload &amp; process</button>
+          <span class="hint" id="upload-note">The file goes directly to object storage; the server only signs the request.</span>
+        </div>
+      </form>
+    </section>
+  `;
+
+  const form = document.getElementById("upload-form");
+  const titleInput = document.getElementById("upload-title");
+  const fileInput = document.getElementById("upload-file");
+  const fileMeta = document.getElementById("upload-file-meta");
+  const errorBox = document.getElementById("upload-error");
+  const statusBox = document.getElementById("upload-status");
+  const meter = document.getElementById("upload-meter");
+  const meterFill = meter.querySelector("span");
+  const submit = document.getElementById("upload-submit");
+  const note = document.getElementById("upload-note");
+  let busy = false;
+
+  const showError = (message) => {
+    errorBox.textContent = message;
+    errorBox.classList.remove("hidden");
+  };
+
+  const resetFeedback = () => {
+    errorBox.classList.add("hidden");
+    statusBox.classList.add("hidden");
+    meter.classList.add("hidden");
+    meterFill.style.width = "0%";
+  };
+
+  const showStatus = (message) => {
+    statusBox.textContent = message;
+    statusBox.classList.remove("hidden");
+  };
+
+  const updateFileMeta = () => {
+    const file = fileInput.files?.[0];
+    if (!file) {
+      fileMeta.textContent = "Choose an MP4 file.";
+      return;
+    }
+    fileMeta.textContent = `${file.name} · ${formatSize(file.size)}`;
+    if (!titleInput.value.trim()) {
+      titleInput.value = file.name.replace(/\.[^.]+$/, "");
+    }
+  };
+
+  fileInput.addEventListener("change", updateFileMeta);
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (busy) return;
+
+    resetFeedback();
+    const title = titleInput.value.trim();
+    const file = fileInput.files?.[0];
+
+    if (!title) {
+      showError("Give the video a title first.");
+      return;
+    }
+    if (!file) {
+      showError("Choose an MP4 file to upload.");
+      return;
+    }
+    if (!isMp4File(file)) {
+      showError("Only MP4 files are supported right now.");
+      return;
+    }
+    if (file.size > MAX_UPLOAD_BYTES) {
+      showError(`That file is ${formatSize(file.size)}. The limit is ${formatSize(MAX_UPLOAD_BYTES)}.`);
+      return;
+    }
+
+    busy = true;
+    submit.disabled = true;
+    submit.textContent = "Creating upload ticket…";
+    note.textContent = "Preparing a direct upload to object storage.";
+
+    try {
+      const created = await gql(
+        `mutation($video: VideoInput!) {
+           add_video(video: $video) {
+             videoId objectKey uploadUrl contentType expiresInSeconds
+           }
+         }`,
+        { video: { name: title, size: file.size } },
+      );
+      const ticket = created.add_video;
+      if (!ticket?.uploadUrl || ticket.videoId == null) {
+        throw new Error("The backend did not return a usable upload ticket.");
+      }
+
+      showStatus("Uploading the video directly to storage…");
+      submit.textContent = "Uploading…";
+      meter.classList.remove("hidden");
+
+      await putFile(
+        ticket.uploadUrl,
+        file,
+        ticket.contentType || "video/mp4",
+        (fraction) => {
+          meterFill.style.width = `${Math.round(fraction * 100)}%`;
+          submit.textContent = `Uploading… ${Math.round(fraction * 100)}%`;
+        },
+      );
+
+      showStatus("Upload complete. Verifying the stored object…");
+      submit.textContent = "Verifying…";
+      note.textContent = "The server is checking the object type, size, and ETag.";
+
+      const confirmed = await gql(
+        `mutation($id: Long!) { confirm(videoId: $id) }`,
+        { id: Number(ticket.videoId) },
+      );
+      if (String(confirmed.confirm || "").toUpperCase() !== "OK") {
+        throw new Error("The backend rejected the uploaded file.");
+      }
+
+      showStatus("Queued for HLS processing. This can take a minute…");
+      submit.textContent = "Processing…";
+      note.textContent = "The worker is converting the file to HLS segments.";
+
+      const status = await pollVideoStatus(ticket.videoId, gen, showStatus);
+      if (gen !== generation) return;
+
+      if (status === "OK") {
+        state.catalogLoaded = false;
+        toast("Video processed — opening it now.", "success");
+        location.hash = `#/watch/${encodeURIComponent(title)}`;
+        return;
+      }
+      if (status === "ERROR") {
+        throw new Error("The worker could not process this file. Try a different MP4.");
+      }
+      if (status === "DELETED") {
+        throw new Error("This video was deleted before processing finished.");
+      }
+
+      showStatus("Still processing. Open the catalog in a moment to check again.");
+      submit.textContent = "Upload another";
+      note.textContent = "The backend has not finished HLS conversion yet.";
+      busy = false;
+      submit.disabled = false;
+      return;
+    } catch (error) {
+      showError(error.message);
+      statusBox.classList.add("hidden");
+    } finally {
+      if (gen === generation) {
+        busy = false;
+        submit.disabled = false;
+        if (submit.textContent !== "Upload another") submit.textContent = "Upload & process";
+      }
+    }
+  });
+}
+
+/* ------------------------------------------------------------------ */
 /* Catalog                                                            */
 /* ------------------------------------------------------------------ */
 
@@ -468,8 +736,8 @@ async function renderBrowse(gen) {
       <section class="empty-state">
         <span class="empty-icon">🎬</span>
         <h2>No titles yet</h2>
-        <p>The catalog is empty. Seed the mock data or add a video through the GraphQL API, then refresh.</p>
-        <button class="btn primary" id="retry-catalog">Refresh catalog</button>
+        <p>The catalog is empty. Upload an MP4 or seed the mock data, then refresh.</p>
+        <a class="btn primary" href="#/upload">Upload a video</a>
       </section>
     `;
     return;
@@ -616,7 +884,7 @@ function renderWatchLayout(video, options = {}) {
   const status = String(video.videoStatus || "").toUpperCase();
   const others = state.videos.filter((item) => item.name !== video.name).slice(0, 5);
   const watchHistoryId = options.watchHistoryId || null;
-  const statusLabel = status === "OK" ? "Ready" : status === "PENDING" ? "Processing" : status || "Unknown";
+  const statusLabel = videoStatusLabel(status);
 
   let progressControls = "";
   if (!state.token) {
@@ -853,6 +1121,9 @@ async function renderRoute() {
   if (parts[0] === "history") {
     setActiveNav("history");
     await renderHistory(gen);
+  } else if (parts[0] === "upload") {
+    setActiveNav("upload");
+    await renderUpload(gen);
   } else if (parts[0] === "watch" && parts[1]) {
     setActiveNav("");
     await renderWatch(decodeURIComponent(parts.slice(1).join("/")), gen);
