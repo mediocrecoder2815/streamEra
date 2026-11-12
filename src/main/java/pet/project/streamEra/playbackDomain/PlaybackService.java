@@ -19,7 +19,7 @@ public class PlaybackService {
         Video video = videoRepository.findById(id).
                 orElseThrow(EntityNotFoundException::new);
 
-        if(isValidVideo(video)){
+        if(!isValidVideo(video)){
             return null;
         }
         return video;
@@ -27,7 +27,7 @@ public class PlaybackService {
     public Video getVideoByName(String name){
         Video video = videoRepository.findByName(name).
                 orElseThrow(EntityNotFoundException::new);
-        if (isValidVideo(video)){
+        if (!isValidVideo(video)){
             return null;
         }
         return video;
@@ -35,7 +35,7 @@ public class PlaybackService {
 
 
     private boolean isValidVideo(Video video){
-        return !video.getVideoStatus().equals(VideoStatus.OK);
+        return video.getVideoStatus().equals(VideoStatus.PENDING) || video.getVideoStatus().equals(VideoStatus.OK);
     }
 
     public List<Video> getAllVideos() {

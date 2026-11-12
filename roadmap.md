@@ -14,9 +14,9 @@
 - [x] FFmpeg installed; RabbitMQ in `docker-compose`; monolith + worker config.
 - [x] Worker skeleton: consumes, downloads, runs ffmpeg, uploads HLS.
 - [x] Demo frontend: catalog, player, login/register, watch history.
-- [ ] Upload handshake (presigned URL + confirm).
-- [ ] Closed status loop (`PENDING → PROCESSING → OK/ERROR`).
-- [ ] Real browser upload; seeded titles currently point at a bundled `/media/demo.mp4` placeholder.
+- [x] Upload handshake (presigned URL + confirm).
+- [x] Closed status loop (`PENDING → PROCESSING → OK/ERROR`).
+- [x] Real browser upload; seeded titles currently point at a bundled `/media/demo.mp4` placeholder.
 
 ## Invariants — never break these
 
@@ -103,8 +103,8 @@
 - [x] Worker uploads the generated HLS files back to storage.
 - [x] Verify the output directory contains `index.m3u8` and at least one `.ts` segment before publishing anything.
 - [ ] Upload segments first, playlist last, so a visible playlist never points at missing segments.
-- [ ] Replace the plain string message with a structured success event: `video.processed { videoId, playlistKey }`.
-- [ ] Publish `video.failed { videoId, reason }` on every processing error.
+- [x] Replace the plain string message with a structured success event: `video.processed { videoId, playlistKey }`.
+- [x] Publish `video.failed { videoId, reason }` on every processing error.
 - [ ] Make the worker safe to run twice for the same video (overwrite is fine; state must not corrupt).
 
 **Done when:** one message produces a complete playlist + segments in MinIO and exactly one success event.
@@ -114,11 +114,12 @@
 ### 3.4 Status integration — close the loop
 
 - [x] A consumer exists (`receiveMessage`), but it only flips status and never sets `videoUrl`.
-- [ ] Monolith consumes `video.processed` and `video.failed`.
-- [ ] On success: set `OK` and `videoUrl = {mediaBaseUrl}/hls/{videoId}/index.m3u8`.
-- [ ] On failure: set `ERROR` and store the reason (log or column).
-- [ ] Ignore duplicate or stale events; never move out of `DELETED`.
-- [ ] Decide whether to trust the event or `HEAD` the playlist before setting `OK`.
+- [x] Monolith consumes `video.processed` and `video.failed`.
+- [x] On success: set `OK` and `videoUrl = {mediaBaseUrl}/hls/{videoId}/index.m3u8`.
+- [x] On failure: set `ERROR` and store the reason (log or column).
+- [ ] Ignore duplicate or stale events; never move out of `DELETED`. 
+  - EDIT. we ignore duplicates, only constraint is video name 
+- [x] Decide whether to trust the event or `HEAD` the playlist before setting `OK`.
 
 **Done when:** uploading one file moves the row to `OK` or `ERROR` with no manual SQL.
 
@@ -126,11 +127,11 @@
 
 ### 3.5 Frontend — make it visible
 
-- [ ] Upload modal: title, file picker, progress bar (use XHR for upload progress).
-- [ ] Two-step flow: request upload ticket → PUT to MinIO → confirm.
-- [ ] Catalog shows status badges: `PENDING`, `PROCESSING`, `OK`, `ERROR`.
-- [ ] Poll `video_byId` while processing; switch to the player when `OK`.
-- [ ] Play the real HLS playlist with hls.js and save progress as before.
+- [x] Upload modal: title, file picker, progress bar (use XHR for upload progress). — Implemented as an upload page rather than a modal.
+- [x] Two-step flow: request upload ticket → PUT to MinIO → confirm.
+- [x] Catalog shows status badges: `PENDING`, `PROCESSING`, `OK`, `ERROR`. — Badge rendering added; the catalog query currently returns only `OK`/`PENDING`, so `PROCESSING`/`ERROR` won't appear until the backend filter changes.
+- [x] Poll `video_byId` while processing; switch to the player when `OK`. — Implemented with the `video_status` query instead of `video_byId`.
+- [x] Play the real HLS playlist with hls.js and save progress as before.
 
 **Done when:** the one-sentence demo works with a real file, not `/media/demo.mp4`.
 

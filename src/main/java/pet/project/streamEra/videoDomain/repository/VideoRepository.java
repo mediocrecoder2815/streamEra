@@ -16,7 +16,6 @@ import java.util.Set;
 
 public interface VideoRepository extends JpaRepository<Video, Long> {
     @EntityGraph(attributePaths = {"categorySet"})
-
     Optional<Video> findByName(String name);
 
     @Override

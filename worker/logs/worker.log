@@ -1,21 +1,27 @@
-2026-11-10T20:17:56.771+01:00  INFO 135471 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 135471 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
-2026-11-10T20:17:56.773+01:00 DEBUG 135471 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
-2026-11-10T20:17:56.774+01:00  INFO 135471 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
-2026-11-10T20:17:56.852+01:00  INFO 135471 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-11-10T20:17:57.017+01:00  INFO 134212 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 134212 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
-2026-11-10T20:17:57.018+01:00 DEBUG 134212 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
-2026-11-10T20:17:57.018+01:00  INFO 134212 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
-2026-11-10T20:17:57.233+01:00  INFO 134212 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:17:57.240+01:00  INFO 134212 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5e78564c:0/SimpleConnection@55a7b81 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=48628]
-2026-11-10T20:17:57.252+01:00  INFO 134212 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 0.284 seconds (process running for 82.625)
-2026-11-10T20:17:57.253+01:00  INFO 134212 --- [streamEra-worker] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2026-11-10T20:17:58.372+01:00  INFO 135471 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:17:58.423+01:00  INFO 135471 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6f473056:0/SimpleConnection@146575b5 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=48642]
-2026-11-10T20:17:58.482+01:00  INFO 135471 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 2.212 seconds (process running for 2.774)
-2026-11-10T20:18:20.846+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
-2026-11-10T20:19:21.279+01:00  INFO 135471 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
-2026-11-10T20:19:21.502+01:00  INFO 135471 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
-2026-11-10T20:19:39.041+01:00  WARN 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+2026-11-12T10:16:43.482+01:00  INFO 10514 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 10514 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
+2026-11-12T10:16:43.486+01:00 DEBUG 10514 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
+2026-11-12T10:16:43.487+01:00  INFO 10514 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
+2026-11-12T10:16:43.522+01:00  INFO 10514 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-12T10:16:44.538+01:00  INFO 10514 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:16:44.577+01:00  INFO 10514 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#479eec7c:0/SimpleConnection@39da84e8 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=42816]
+2026-11-12T10:16:44.624+01:00  INFO 10514 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 1.446 seconds (process running for 1.731)
+2026-11-12T10:19:04.759+01:00  INFO 10514 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:24:15.338+01:00  INFO 10514 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:26:24.390+01:00  INFO 10514 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:30:39.854+01:00  INFO 10514 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:35:53.313+01:00  INFO 10514 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:40:43.006+01:00  INFO 10514 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-12T10:40:43.973+01:00  INFO 10514 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-12T10:43:08.089+01:00  INFO 29490 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 29490 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
+2026-11-12T10:43:08.091+01:00 DEBUG 29490 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
+2026-11-12T10:43:08.092+01:00  INFO 29490 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
+2026-11-12T10:43:08.130+01:00  INFO 29490 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-12T10:43:09.412+01:00  INFO 29490 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:43:09.489+01:00  INFO 29490 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#28cba32d:0/SimpleConnection@44bc0b23 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=48568]
+2026-11-12T10:43:09.609+01:00  INFO 29490 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 1.872 seconds (process running for 2.159)
+2026-11-12T10:44:09.395+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:46:06.555+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:48:08.764+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
 
 com.rabbitmq.client.ShutdownSignalException: connection error; protocol method: #method<connection.close>(reply-code=320, reply-text=CONNECTION_FORCED - broker forced connection closure with reason 'shutdown', class-id=0, method-id=0)
 	at com.rabbitmq.client.impl.AMQConnection.startShutdown(AMQConnection.java:1014) ~[amqp-client-5.27.1.jar:5.27.1]
@@ -30,9 +36,9 @@ com.rabbitmq.client.ShutdownSignalException: connection error; protocol method: 
 	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:695) ~[amqp-client-5.27.1.jar:5.27.1]
 	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
 
-2026-11-10T20:19:39.046+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@28468840: tags=[[amq.ctag-9vtw97mFSHW79rAB0M_gGw]], channel=Cached Rabbit Channel: AMQChannel(amqp://myuser@127.0.0.1:5672/,1), conn: Proxy@3222838d Shared Rabbit Connection: SimpleConnection@55a7b81 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=48628], acknowledgeMode=AUTO local queue size=0
-2026-11-10T20:19:39.047+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:39.050+01:00 ERROR 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T10:48:08.768+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@64cb9066: tags=[[amq.ctag-_o049fy-RpaXOrpFuMBcrA]], channel=Cached Rabbit Channel: AMQChannel(amqp://myuser@127.0.0.1:5672/,1), conn: Proxy@402c1274 Shared Rabbit Connection: SimpleConnection@44bc0b23 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=48568], acknowledgeMode=AUTO local queue size=0
+2026-11-12T10:48:08.769+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:48:08.771+01:00 ERROR 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
 
 org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
 	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:60) ~[spring-rabbit-4.0.5.jar:4.0.5]
@@ -64,27 +70,90 @@ Caused by: java.net.ConnectException: Connection refused
 	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.0.5.jar:4.0.5]
 	... 12 common frames omitted
 
-2026-11-10T20:19:39.050+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:44.054+01:00  WARN 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
-2026-11-10T20:19:44.054+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@2f61de82: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
-2026-11-10T20:19:44.056+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:44.057+01:00 ERROR 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
-2026-11-10T20:19:44.057+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:49.063+01:00  WARN 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
-2026-11-10T20:19:49.064+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@109474eb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
-2026-11-10T20:19:49.065+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:49.066+01:00 ERROR 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
-2026-11-10T20:19:49.066+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:54.072+01:00  WARN 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
-2026-11-10T20:19:54.073+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@73332f7f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
-2026-11-10T20:19:54.074+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:54.076+01:00  WARN 134212 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
-2026-11-10T20:19:54.077+01:00  WARN 134212 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
-2026-11-10T20:19:54.077+01:00 ERROR 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
-2026-11-10T20:19:54.077+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:54.078+01:00  WARN 134212 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
-2026-11-10T20:19:54.079+01:00  WARN 134212 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
-2026-11-10T20:19:59.081+01:00  WARN 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+2026-11-12T10:48:08.772+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:48:13.779+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T10:48:13.780+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@5318b56: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T10:48:13.781+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:48:13.781+01:00 ERROR 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T10:48:13.782+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:48:18.786+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T10:48:18.787+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@7eb9a49e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T10:48:18.788+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:48:18.788+01:00 ERROR 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T10:48:18.788+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:48:23.791+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T10:48:23.792+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@40934eb8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T10:48:23.793+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:48:23.802+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#28cba32d:7/SimpleConnection@2378f90b [delegate=amqp://myuser@127.0.0.1:5672/, localPort=59092]
+2026-11-12T10:59:21.954+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+
+com.rabbitmq.client.ShutdownSignalException: connection error; protocol method: #method<connection.close>(reply-code=320, reply-text=CONNECTION_FORCED - broker forced connection closure with reason 'shutdown', class-id=0, method-id=0)
+	at com.rabbitmq.client.impl.AMQConnection.startShutdown(AMQConnection.java:1014) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.shutdown(AMQConnection.java:1004) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.handleConnectionClose(AMQConnection.java:942) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.processControlCommand(AMQConnection.java:897) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$1.processAsync(AMQConnection.java:276) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:193) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:125) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:748) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.access$400(AMQConnection.java:49) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:695) ~[amqp-client-5.27.1.jar:5.27.1]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+
+2026-11-12T10:59:21.956+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@8e8dcd1: tags=[[amq.ctag-Aio9qVUPQ1qNXdLllWVgHQ]], channel=Cached Rabbit Channel: AMQChannel(amqp://myuser@127.0.0.1:5672/,1), conn: Proxy@402c1274 Shared Rabbit Connection: SimpleConnection@2378f90b [delegate=amqp://myuser@127.0.0.1:5672/, localPort=59092], acknowledgeMode=AUTO local queue size=0
+2026-11-12T10:59:21.958+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:59:21.962+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T10:59:21.964+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T10:59:21.965+01:00 ERROR 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:69) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2239) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2211) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2191) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:472) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:456) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1970) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1934) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1523) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1356) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: java.io.IOException
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:414) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1357) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.27.1.jar:5.27.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	... 12 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:341) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 17 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:315) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:360) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:984) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:974) ~[na:na]
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:289) ~[na:na]
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:308) ~[na:na]
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:300) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:92) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:694) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 1 common frames omitted
+
+2026-11-12T10:59:21.967+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:59:21.970+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T10:59:26.975+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
 
 org.springframework.amqp.AmqpIOException: java.io.IOException
 	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:69) ~[spring-rabbit-4.0.5.jar:4.0.5]
@@ -129,14 +198,325 @@ Caused by: java.net.SocketException: Connection reset
 	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:694) ~[amqp-client-5.27.1.jar:5.27.1]
 	... 1 common frames omitted
 
-2026-11-10T20:19:59.083+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@50a4c141: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
-2026-11-10T20:19:59.084+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:19:59.091+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5e78564c:9/SimpleConnection@52ebb68 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=52492]
-2026-11-10T20:21:25.130+01:00  INFO 139833 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 139833 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
-2026-11-10T20:21:25.132+01:00 DEBUG 139833 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
-2026-11-10T20:21:25.133+01:00  INFO 139833 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
-2026-11-10T20:21:25.173+01:00  INFO 139833 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-11-10T20:21:26.309+01:00  INFO 139833 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-11-10T20:21:26.352+01:00  INFO 139833 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4049ec1d:0/SimpleConnection@20f3221f [delegate=amqp://myuser@127.0.0.1:5672/, localPort=60928]
-2026-11-10T20:21:26.403+01:00  INFO 139833 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 1.645 seconds (process running for 1.98)
-2026-11-10T20:21:55.553+01:00  INFO 134212 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T10:59:26.976+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@1beaf5e9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T10:59:26.977+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:59:26.978+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T10:59:26.978+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T10:59:26.979+01:00 ERROR 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T10:59:26.979+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:59:26.979+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T10:59:26.980+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T10:59:31.983+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:69) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils$RabbitResourceFactory.createConnection(ConnectionFactoryUtils.java:330) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.doGetTransactionalResourceHolder(ConnectionFactoryUtils.java:139) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:100) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:83) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:631) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1524) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1356) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: java.io.IOException
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:414) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1357) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.27.1.jar:5.27.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	... 10 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:341) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 15 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:315) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:360) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:984) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:974) ~[na:na]
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:289) ~[na:na]
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:308) ~[na:na]
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:300) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:92) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:694) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 1 common frames omitted
+
+2026-11-12T10:59:31.985+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@1e8a25e3: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T10:59:31.985+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T10:59:31.988+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#28cba32d:12/SimpleConnection@2a73945 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=55828]
+2026-11-12T11:04:48.107+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T11:18:53.345+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+
+com.rabbitmq.client.ShutdownSignalException: connection error; protocol method: #method<connection.close>(reply-code=320, reply-text=CONNECTION_FORCED - broker forced connection closure with reason 'shutdown', class-id=0, method-id=0)
+	at com.rabbitmq.client.impl.AMQConnection.startShutdown(AMQConnection.java:1014) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.shutdown(AMQConnection.java:1004) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.handleConnectionClose(AMQConnection.java:942) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.processControlCommand(AMQConnection.java:897) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$1.processAsync(AMQConnection.java:276) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:193) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:125) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:748) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.access$400(AMQConnection.java:49) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:695) ~[amqp-client-5.27.1.jar:5.27.1]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+
+2026-11-12T11:18:53.345+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@17ff8aa9: tags=[[amq.ctag-uvr2xEWJRF-qfgjxh9eL6Q]], channel=Cached Rabbit Channel: AMQChannel(amqp://myuser@127.0.0.1:5672/,1), conn: Proxy@402c1274 Shared Rabbit Connection: SimpleConnection@2a73945 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=55828], acknowledgeMode=AUTO local queue size=0
+2026-11-12T11:18:53.346+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T11:18:53.347+01:00 ERROR 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:60) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2239) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2211) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2191) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:472) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:456) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1970) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1934) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1523) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1356) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:642) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:548) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:599) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:668) ~[na:na]
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:61) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1355) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.27.1.jar:5.27.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	... 12 common frames omitted
+
+2026-11-12T11:18:53.348+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T11:18:58.352+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T11:18:58.353+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@527844e4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T11:18:58.353+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T11:18:58.354+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T11:18:58.355+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T11:18:58.356+01:00 ERROR 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T11:18:58.356+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T11:18:58.357+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T11:18:58.358+01:00  WARN 29490 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T11:19:03.361+01:00  WARN 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:69) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils$RabbitResourceFactory.createConnection(ConnectionFactoryUtils.java:330) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.doGetTransactionalResourceHolder(ConnectionFactoryUtils.java:139) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:100) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:83) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:631) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1524) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1356) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: java.io.IOException
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:414) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1357) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.27.1.jar:5.27.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	... 10 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:341) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 15 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:315) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:360) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:984) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:974) ~[na:na]
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:289) ~[na:na]
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:308) ~[na:na]
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:300) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:92) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:694) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 1 common frames omitted
+
+2026-11-12T11:19:03.362+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@70d64ecc: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T11:19:03.363+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T11:19:03.365+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#28cba32d:17/SimpleConnection@a2ee83f [delegate=amqp://myuser@127.0.0.1:5672/, localPort=36004]
+2026-11-12T11:19:20.568+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T11:22:15.864+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T16:34:16.590+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-12T16:34:16.966+01:00  INFO 29490 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-12T16:40:16.921+01:00  INFO 88272 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 88272 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
+2026-11-12T16:40:16.923+01:00 DEBUG 88272 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
+2026-11-12T16:40:16.923+01:00  INFO 88272 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
+2026-11-12T16:40:16.961+01:00  INFO 88272 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-12T16:40:17.914+01:00  INFO 88272 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:17.921+01:00  INFO 88272 --- [streamEra-worker] [restartedMain] o.s.a.r.l.SimpleMessageListenerContainer : Broker not available; cannot force queue declarations during start: java.net.ConnectException: Connection refused
+2026-11-12T16:40:17.926+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:17.928+01:00 ERROR 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:60) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2239) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2211) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2191) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:472) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:456) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1970) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1934) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1523) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1356) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:642) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:548) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:599) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:668) ~[na:na]
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:61) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1355) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.27.1.jar:5.27.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	... 12 common frames omitted
+
+2026-11-12T16:40:17.932+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:17.936+01:00  INFO 88272 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 1.331 seconds (process running for 1.61)
+2026-11-12T16:40:22.937+01:00  WARN 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T16:40:22.939+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@4694dfec: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T16:40:22.940+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:22.941+01:00 ERROR 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T16:40:22.941+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:27.944+01:00  WARN 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T16:40:27.945+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@4a8959cd: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T16:40:27.947+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:27.948+01:00 ERROR 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T16:40:27.948+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:32.951+01:00  WARN 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T16:40:32.952+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@14996cc4: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T16:40:32.953+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:32.953+01:00 ERROR 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T16:40:32.953+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:37.957+01:00  WARN 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T16:40:37.958+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@76c466ac: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T16:40:37.959+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:37.959+01:00 ERROR 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T16:40:37.959+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:42.962+01:00  WARN 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T16:40:42.963+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@15302c25: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T16:40:42.964+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:42.964+01:00 ERROR 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T16:40:42.965+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:47.968+01:00  WARN 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused
+2026-11-12T16:40:47.968+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@4703f542: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T16:40:47.969+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:47.988+01:00  WARN 88272 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T16:40:47.988+01:00 ERROR 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-11-12T16:40:47.988+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:47.989+01:00  WARN 88272 --- [streamEra-worker] [AMQP Connection 127.0.0.1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T16:40:47.990+01:00  WARN 88272 --- [streamEra-worker] [AMQP Connection 0:0:0:0:0:0:0:1:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Connection reset)
+2026-11-12T16:40:52.993+01:00  WARN 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:69) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils$RabbitResourceFactory.createConnection(ConnectionFactoryUtils.java:330) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.doGetTransactionalResourceHolder(ConnectionFactoryUtils.java:139) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:100) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:83) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:631) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1524) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1356) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: java.io.IOException
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:414) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1357) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.27.1.jar:5.27.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.0.5.jar:4.0.5]
+	... 10 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:341) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 15 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:315) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:360) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:984) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:974) ~[na:na]
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:289) ~[na:na]
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:308) ~[na:na]
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:300) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:92) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199) ~[amqp-client-5.27.1.jar:5.27.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:694) ~[amqp-client-5.27.1.jar:5.27.1]
+	... 1 common frames omitted
+
+2026-11-12T16:40:52.995+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@129bb13b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-11-12T16:40:52.996+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:40:53.024+01:00  INFO 88272 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#28cba32d:15/SimpleConnection@5ebf93db [delegate=amqp://myuser@127.0.0.1:5672/, localPort=43440]
+2026-11-12T16:44:45.700+01:00  INFO 6474 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 6474 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
+2026-11-12T16:44:45.702+01:00 DEBUG 6474 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
+2026-11-12T16:44:45.703+01:00  INFO 6474 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
+2026-11-12T16:44:45.739+01:00  INFO 6474 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-12T16:44:47.126+01:00  INFO 6474 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T16:44:47.191+01:00  INFO 6474 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7c33b2d7:0/SimpleConnection@11e042a3 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=45402]
+2026-11-12T16:44:47.263+01:00  INFO 6474 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 1.933 seconds (process running for 2.222)
+2026-11-12T17:04:20.170+01:00  INFO 6474 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-12T17:04:20.416+01:00  INFO 6474 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-12T17:14:42.420+01:00  INFO 25496 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 25496 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
+2026-11-12T17:14:42.422+01:00 DEBUG 25496 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
+2026-11-12T17:14:42.423+01:00  INFO 25496 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
+2026-11-12T17:14:42.472+01:00  INFO 25496 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-12T17:14:43.632+01:00  INFO 25496 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T17:14:43.676+01:00  INFO 25496 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4049ec1d:0/SimpleConnection@20f3221f [delegate=amqp://myuser@127.0.0.1:5672/, localPort=45530]
+2026-11-12T17:14:43.733+01:00  INFO 25496 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 1.682 seconds (process running for 1.979)
+2026-11-12T17:17:00.262+01:00  INFO 25496 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T17:18:29.883+01:00  INFO 25496 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T17:21:03.975+01:00  INFO 25496 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T17:26:11.160+01:00  INFO 25496 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-12T17:26:12.060+01:00  INFO 25496 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-11-12T17:26:16.198+01:00  INFO 38323 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Starting WorkerApplication using Java 26.0.1 with PID 38323 (/home/mediocrity/shas/pet_p/streamEra/worker/target/classes started by mediocrity in /home/mediocrity/shas/pet_p/streamEra/worker)
+2026-11-12T17:26:16.199+01:00 DEBUG 38323 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Running with Spring Boot v4.0.8, Spring v7.0.9
+2026-11-12T17:26:16.199+01:00  INFO 38323 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : The following 1 profile is active: "minio"
+2026-11-12T17:26:16.227+01:00  INFO 38323 --- [streamEra-worker] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-12T17:26:17.077+01:00  INFO 38323 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-11-12T17:26:17.105+01:00  INFO 38323 --- [streamEra-worker] [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#28cba32d:0/SimpleConnection@44bc0b23 [delegate=amqp://myuser@127.0.0.1:5672/, localPort=47978]
+2026-11-12T17:26:17.138+01:00  INFO 38323 --- [streamEra-worker] [restartedMain] worker.WorkerApplication                 : Started WorkerApplication in 1.26 seconds (process running for 1.493)
+2026-11-12T17:32:22.280+01:00  INFO 38323 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T17:32:49.499+01:00  INFO 38323 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] worker.VideoUploadService                : S3 endpoint=http://localhost:9000, bucket=streamera-bucket, pathStyle=true
+2026-11-12T18:32:37.669+01:00  INFO 38323 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-11-12T18:32:38.009+01:00  INFO 38323 --- [streamEra-worker] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.

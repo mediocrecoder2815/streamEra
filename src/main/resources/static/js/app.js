@@ -6,7 +6,6 @@
  */
 
 const API_URL = "/graphql";
-const DEMO_SRC = "/media/demo.mp4";
 const LS_TOKEN = "streamera.token";
 const LS_USER = "streamera.username";
 const MAX_UPLOAD_BYTES = 2_000_000_000; // 2 GB decimal, matches the backend limit
@@ -670,7 +669,7 @@ async function renderUpload(gen) {
 
 async function loadCatalog() {
   try {
-    const data = await gql(`query { videos { name videoLength categorySet { categoryId name } } }`);
+    const data = await gql(`query { videos { name videoLength videoStatus categorySet { categoryId name } } }`);
     state.videos = (data.videos || []).filter(Boolean);
     state.catalogError = "";
   } catch (error) {
@@ -683,6 +682,8 @@ async function loadCatalog() {
 
 function cardMarkup(video) {
   const categories = categoryNames(video);
+  const status = String(video.videoStatus || "").toUpperCase();
+  const statusClass = status.toLowerCase();
   const searchText = `${video.name || ""} ${categories.join(" ")}`.toLowerCase();
   return `
     <article class="card" role="button" tabindex="0"
@@ -691,6 +692,7 @@ function cardMarkup(video) {
              aria-label="Open ${esc(video.name)}">
       <div class="poster" style="${posterVars(video.name)}">
         <span class="poster-initials">${esc(initials(video.name))}</span>
+        ${status ? `<span class="status-badge ${esc(statusClass)}">${esc(status)}</span>` : ""}
         <span class="poster-duration">${formatDuration(video.videoLength)}</span>
         <span class="poster-play" aria-hidden="true">▶</span>
       </div>
@@ -769,7 +771,7 @@ async function renderBrowse(gen) {
         <h2>All titles</h2>
         <p class="muted">${state.videos.length} title${state.videos.length === 1 ? "" : "s"} · served by the GraphQL catalog</p>
       </div>
-      <span class="demo-chip">Demo catalog</span>
+      <span class="demo-chip">Catalog</span>
     </section>
 
     <section class="grid" id="catalog-grid">
@@ -795,24 +797,31 @@ function destroyPlayer() {
   state.hls = null;
 }
 
-function attachSource(player, source) {
-  const isHls = /m3u8/i.test(source);
-  let fellBack = false;
+function showStreamError(player, message) {
   const badge = document.getElementById("player-badge");
+  destroyPlayer();
+  if (badge) badge.textContent = "STREAM ERROR";
+  player.removeAttribute("src");
+  player.load();
+  toast(message || "Stream unavailable. Reload the page and try again.", "error");
+}
 
-  const useFallback = () => {
-    if (fellBack) return;
-    fellBack = true;
-    destroyPlayer();
-    if (badge) badge.textContent = "SAMPLE CLIP";
-    toast("Stream unavailable — playing the bundled sample clip.", "info");
-    player.src = DEMO_SRC;
-    player.load();
-    const attempt = player.play();
-    if (attempt && typeof attempt.catch === "function") attempt.catch(() => {});
+function attachSource(player, source) {
+  if (!source) {
+    showStreamError(player, "This title has no playback source yet.");
+    return;
+  }
+
+  const isHls = /m3u8/i.test(source);
+  let failed = false;
+
+  const fail = () => {
+    if (failed) return;
+    failed = true;
+    showStreamError(player);
   };
 
-  player.addEventListener("error", useFallback);
+  player.addEventListener("error", fail);
 
   if (isHls && window.Hls && window.Hls.isSupported()) {
     try {
@@ -821,14 +830,15 @@ function attachSource(player, source) {
       hls.loadSource(source);
       hls.attachMedia(player);
       hls.on(window.Hls.Events.ERROR, (_event, data) => {
-        if (data && data.fatal) useFallback();
+        if (data && data.fatal) fail();
       });
     } catch (error) {
-      useFallback();
+      fail();
     }
     return;
   }
 
+  // Safari plays HLS natively; other browsers need hls.js to be loaded.
   player.src = source;
 }
 
@@ -854,11 +864,29 @@ async function saveProgress(watchHistoryId, seconds, silent = false) {
   }
 }
 
-function setupPlayer(video, watchHistoryId) {
+function setupPlayer(video, watchHistoryId, resumeAt = 0) {
   const player = document.getElementById("player");
   if (!player) return;
 
-  attachSource(player, video.videoUrl || DEMO_SRC);
+  attachSource(player, video.videoUrl);
+
+  if (resumeAt > 0) {
+    const resume = () => {
+      const duration = Number(player.duration);
+      if (Number.isFinite(duration) && duration > 0 && resumeAt >= duration - 2) return;
+      try {
+        player.currentTime = resumeAt;
+        setProgressNote(`Resumed at ${formatClock(resumeAt)}.`);
+      } catch (error) {
+        /* seeking may not be available yet */
+      }
+    };
+    if (player.readyState >= 1) {
+      resume();
+    } else {
+      player.addEventListener("loadedmetadata", resume, { once: true });
+    }
+  }
 
   const saveButton = document.getElementById("save-progress");
   if (saveButton) {
@@ -867,7 +895,7 @@ function setupPlayer(video, watchHistoryId) {
 
   if (!watchHistoryId) return;
 
-  let lastSaved = -30;
+  let lastSaved = Math.max(0, Number(resumeAt) || 0);
   player.addEventListener("timeupdate", () => {
     if (player.currentTime - lastSaved >= 20) {
       lastSaved = player.currentTime;
@@ -884,6 +912,7 @@ function renderWatchLayout(video, options = {}) {
   const status = String(video.videoStatus || "").toUpperCase();
   const others = state.videos.filter((item) => item.name !== video.name).slice(0, 5);
   const watchHistoryId = options.watchHistoryId || null;
+  const resumeAt = Number(options.resumeAt) || 0;
   const statusLabel = videoStatusLabel(status);
 
   let progressControls = "";
@@ -902,7 +931,7 @@ function renderWatchLayout(video, options = {}) {
         ${options.notice ? `<div class="notice">${esc(options.notice)}</div>` : ""}
         <div class="player-wrap">
           <video id="player" controls playsinline preload="metadata"></video>
-          <span class="player-badge" id="player-badge">${/demo\.mp4$/i.test(video.videoUrl || "") ? "DEMO CLIP" : "STREAM"}</span>
+          <span class="player-badge" id="player-badge">${status === "OK" || !status ? "STREAM" : esc(status)}</span>
         </div>
         <h1>${esc(video.name)}</h1>
         <div class="meta-row">
@@ -910,7 +939,6 @@ function renderWatchLayout(video, options = {}) {
           <span class="pill subtle">${formatSize(video.size)}</span>
           <span class="pill subtle">${esc(statusLabel)}</span>
         </div>
-        ${video.videoId != null ? "" : `<div class="notice">The backend did not return full playback metadata for this title. Playing the bundled sample clip as a fallback.</div>`}
         <p class="watch-desc">${esc(synopsis(video))}</p>
         <div class="watch-actions">
           ${progressControls}
@@ -941,7 +969,7 @@ function renderWatchLayout(video, options = {}) {
     </section>
   `;
 
-  setupPlayer(video, watchHistoryId);
+  setupPlayer(video, watchHistoryId, resumeAt);
 }
 
 async function renderWatch(name, gen) {
@@ -973,43 +1001,41 @@ async function renderWatch(name, gen) {
   if (gen !== generation) return;
 
   if (!video) {
-    const fallback = state.videos.find((item) => item.name === name);
-    if (!fallback) {
-      viewEl.innerHTML = `
-        <section class="empty-state">
-          <span class="empty-icon">🔎</span>
-          <h1>Title not found</h1>
-          <p>No video named “${esc(name)}” was returned by the playback API.</p>
-          <a class="btn primary" href="#/">Back to catalog</a>
-        </section>
-      `;
-      return;
-    }
-    note = note || "This title has not finished processing, so the player is using the bundled sample clip.";
-    video = {
-      ...fallback,
-      videoId: null,
-      videoUrl: DEMO_SRC,
-      videoStatus: "PENDING",
-      size: null,
-    };
+    const known = state.videos.find((item) => item.name === name);
+    viewEl.innerHTML = `
+      <section class="empty-state">
+        <span class="empty-icon">${known ? "⏳" : "🔎"}</span>
+        <h1>${known ? "Not ready yet" : "Title not found"}</h1>
+        <p>${known
+          ? "This title is still processing, or its stream failed. Refresh in a moment."
+          : `No video named “${esc(name)}” was returned by the playback API.`}</p>
+        ${note ? `<p class="muted small">${esc(note)}</p>` : ""}
+        <button class="btn primary" id="retry-watch">Refresh</button>
+        <a class="btn glass" href="#/">Back to catalog</a>
+      </section>
+    `;
+    return;
   }
 
   let watchHistoryId = null;
+  let resumeAt = 0;
   if (state.token && video.videoId != null) {
     try {
       const data = await gql(
-        `query($id: Long!) { watchHistoryByVideo(videoId: $id) { watchHistoryId } }`,
-        { id: video.videoId },
+        `mutation($input: WatchHistoryCreateInput) {
+           create_watch_history(watchHistoryInput: $input) { watchHistoryId timestamp }
+         }`,
+        { input: { videoId: video.videoId } },
       );
-      watchHistoryId = data.watchHistoryByVideo?.watchHistoryId || null;
+      watchHistoryId = data.create_watch_history?.watchHistoryId || null;
+      resumeAt = Number(data.create_watch_history?.timestamp) || 0;
     } catch (error) {
-      watchHistoryId = null;
+      note = note || `Could not start watch history: ${error.message}`;
     }
   }
 
   if (gen !== generation) return;
-  renderWatchLayout(video, { watchHistoryId, notice: note });
+  renderWatchLayout(video, { watchHistoryId, notice: note, resumeAt });
 }
 
 /* ------------------------------------------------------------------ */
@@ -1032,7 +1058,7 @@ async function renderHistory(gen) {
   renderLoading("Loading watch history…");
 
   try {
-    const data = await gql(`query { watchHistory { watchHistoryId userId videoId date } }`);
+    const data = await gql(`query { watchHistory { watchHistoryId userId videoId date timestamp } }`);
     if (gen !== generation) return;
 
     const entries = (data.watchHistory || []).filter(Boolean);
@@ -1082,18 +1108,20 @@ async function renderHistory(gen) {
           const video = byId.get(entry.videoId);
           const title = video?.name || `Video #${entry.videoId}`;
           const categories = video ? categoryNames(video) : [];
+          const progress = Number(entry.timestamp) || 0;
+          const progressLabel = progress > 0 ? ` · stopped at ${formatClock(progress)}` : "";
           const inner = `
             <span class="poster thumb" style="${posterVars(title)}">
               <span class="poster-initials">${esc(initials(title))}</span>
             </span>
             <span class="history-info">
               <h3>${esc(title)}</h3>
-              <p class="muted">Watched ${esc(formatDate(entry.date))}</p>
+              <p class="muted">Watched ${esc(formatDate(entry.date))}${esc(progressLabel)}</p>
               <div class="chips">
                 ${categories.slice(0, 2).map((category) => `<span class="chip">${esc(category)}</span>`).join("")}
               </div>
             </span>
-            ${video ? '<span class="btn ghost small">Continue</span>' : '<span class="pill subtle">Unavailable</span>'}
+            ${video ? `<span class="btn ghost small">${progress > 0 ? "Resume" : "Continue"}</span>` : '<span class="pill subtle">Unavailable</span>'}
           `;
           return video
             ? `<a class="history-row" href="#/watch/${encodeURIComponent(video.name)}">${inner}</a>`
@@ -1165,7 +1193,11 @@ function onViewClick(event) {
     return;
   }
 
-  if (event.target.closest("#refresh-history")) {
+  if (event.target.closest("#refresh-history") || event.target.closest("#retry-history")) {
+    renderRoute();
+  }
+
+  if (event.target.closest("#retry-watch")) {
     renderRoute();
   }
 }

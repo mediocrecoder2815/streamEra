@@ -29,13 +29,14 @@ public class WatchHistoryController {
         return watchHistoryService.getWhByVideo(videoId, principal);
     }
 
-    @MutationMapping(name = "update_watch_history")
-    public WatchHistory updateWatchHistory(WatchHistoryDto watchHistoryDto){
-        return watchHistoryService.updateWH(watchHistoryDto);
-    }
 
     @MutationMapping(name ="update_watch_historyProgress")
     public WatchHistory updateProgress(@Argument(name = "updateInput") WatchHistoryProgressDto dto){
         return watchHistoryService.updateProgress(dto);
+    }
+
+    @MutationMapping(name = "create_watch_history")
+    public WatchHistory createWatchHistory(@Argument(name = "watchHistoryInput") WatchHistoryDto watchHistoryDto, Principal principal){
+        return watchHistoryService.createWH(watchHistoryDto, principal);
     }
 }

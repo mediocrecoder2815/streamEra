@@ -4,6 +4,7 @@ package pet.project.streamEra.userDomain.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CollectionIdMutability;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -34,4 +35,5 @@ public class WatchHistory {
     @Column(name = "playback_position_seconds")
     @ColumnDefault(value = "0")
     private Long timestamp;
+
 }

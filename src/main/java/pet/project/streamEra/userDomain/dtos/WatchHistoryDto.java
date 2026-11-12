@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 public record WatchHistoryDto(
-        UUID videoId,
+        Long videoId,
         Instant date,
         Long timestamp
 ) {

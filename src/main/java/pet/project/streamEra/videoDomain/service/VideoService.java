@@ -26,6 +26,7 @@ import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
 
 import java.time.Duration;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -34,14 +35,11 @@ public class VideoService {
     private final VideoRepository videoRepository;
     private final CategoryRepository categoryRepository;
     private final VideoMessageSender videoMessageSender;
-//    private final Deque<Long> badVideos = new ArrayDeque<>();
     private final AwsProperties properties;
     private final S3Client s3Client;
     private final S3Presigner s3Presigner;
 
     private final String prefix = "raw";
-    // default file name
-    private final String FILENAME = "source";
     // ~2 gb
     private final long sizeLimit = 2_000_000_000L;
     private static final String CONTENT_TYPE = "video/mp4";
@@ -57,10 +55,14 @@ public class VideoService {
 
 
     // checks video metadata,
-    // then create key -> /raw/{videoId}/source.mp4
+    // then create key -> /raw/{videoId}/{videoName}.mp4
     // return video with 'PENDING' status
     public UploadTicket addVideo(VideoDto videoDto) {
         log.info("Initializing video with name: {}", videoDto.name());
+        Optional<Video> video = videoRepository.findByName(videoDto.name());
+        if(video.isPresent()) {
+            throw new IllegalArgumentException("Video with such name already exists");
+        }
         Video newVideo = new Video();
         newVideo.setName(videoDto.name());
         newVideo.setSize(videoDto.size()); // initial size (verify after upload)
@@ -69,7 +71,7 @@ public class VideoService {
         newVideo.setVideoUrl("");
         newVideo = videoRepository.save(newVideo);
 
-        String key = String.join("/", prefix, newVideo.getVideoId().toString(), FILENAME + ".mp4");
+        String key = String.join("/", prefix, newVideo.getVideoId().toString(), videoDto.name() + ".mp4");
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(properties.s3().bucket())
                 .key(key)
@@ -148,7 +150,10 @@ public class VideoService {
 
     // confirms that video was uploaded
     public String confirm(Long videoId) {
-        String url = String.join("/", "raw", videoId.toString(), "source.mp4");
+        Video video =  findById(videoId);
+        String url = String.join("/", "raw", videoId.toString(), (video.getName() + ".mp4"));
+
+        log.info("Confirming video with id: {}, url: {}", video.getVideoId(), url);
         try{
             HeadObjectResponse response = s3Client.headObject(b->
                         b.bucket(properties.s3().bucket()).key(url).build());
@@ -160,7 +165,7 @@ public class VideoService {
                 dumpVideo(videoId, "Video is not valid format or not uploaded yet");
                 return "ERROR";
             }
-
+            log.info("Video with id: {} has been confirmed", video.getVideoId());
             videoMessageSender.sendMessage(RabbitMqConfig.ROUTING_KEY_UPLOAD, new VideoEvent(videoId, url, "upload"));
             return "OK";
         }
