@@ -16,6 +16,7 @@ public class VideoMessageSender {
     private RabbitTemplate rabbitTemplate;
 
     public void sendMessage(String routingKey, VideoEvent event) {
+
         rabbitTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE_NAME, routingKey, event);
     }
 }

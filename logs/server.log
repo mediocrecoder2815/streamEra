@@ -4931,3 +4931,967 @@ java.lang.IllegalArgumentException: Video with such name already exists
 2026-11-12T18:32:37.027+01:00  INFO 38729 --- [streamEra] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-11-12T18:32:37.028+01:00  INFO 38729 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
 2026-11-12T18:32:37.029+01:00  INFO 38729 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-11-14T13:18:43.856+01:00  INFO 20786 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlE2ETest           : Starting PlaybackGraphQlE2ETest using Java 26.0.1 with PID 20786 (started by mediocrity in /home/mediocrity/shas/pet_p/streamEra)
+2026-11-14T13:18:43.857+01:00  INFO 20786 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlE2ETest           : The following 1 profile is active: "test"
+2026-11-14T13:18:44.370+01:00  INFO 20786 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T13:18:44.474+01:00  INFO 20786 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 5 JPA repository interfaces.
+2026-11-14T13:18:44.955+01:00  INFO 20786 --- [streamEra] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-14T13:18:44.977+01:00  INFO 20786 --- [streamEra] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-14T13:18:44.978+01:00  INFO 20786 --- [streamEra] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-14T13:18:45.009+01:00  INFO 20786 --- [streamEra] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1138 ms
+2026-11-14T13:18:45.480+01:00  INFO 20786 --- [streamEra] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:32778/test?loggerLevel=OFF (PostgreSQL 16.16)
+2026-11-14T13:18:45.510+01:00  INFO 20786 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-14T13:18:45.512+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.013s)
+2026-11-14T13:18:45.522+01:00  INFO 20786 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-14T13:18:45.572+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-14T13:18:45.578+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - inti"
+2026-11-14T13:18:45.609+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - alter video"
+2026-11-14T13:18:45.623+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - mock data"
+2026-11-14T13:18:45.635+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - alter video"
+2026-11-14T13:18:45.644+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - alter watchhistory"
+2026-11-14T13:18:45.653+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - alter watchhistory"
+2026-11-14T13:18:45.662+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "7 - demo frontend data"
+2026-11-14T13:18:45.669+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "8 - remove demo catalog"
+2026-11-14T13:18:45.680+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema "public", now at version v8 (execution time 00:00.050s)
+2026-11-14T13:18:45.757+01:00  INFO 20786 --- [streamEra] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-14T13:18:45.794+01:00  INFO 20786 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.24.Final
+2026-11-14T13:18:46.113+01:00  INFO 20786 --- [streamEra] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T13:18:46.137+01:00  INFO 20786 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-14T13:18:46.155+01:00  INFO 20786 --- [streamEra] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6d58ed12
+2026-11-14T13:18:46.156+01:00  INFO 20786 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-14T13:18:46.176+01:00  WARN 20786 --- [streamEra] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-14T13:18:46.195+01:00  INFO 20786 --- [streamEra] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:32778/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.16
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T13:18:46.962+01:00  INFO 20786 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T13:18:47.003+01:00  INFO 20786 --- [streamEra] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:18:47.066+01:00  INFO 20786 --- [streamEra] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-14T13:18:47.753+01:00  WARN 20786 --- [streamEra] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-14T13:18:47.823+01:00  WARN 20786 --- [streamEra] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 477139cf-cad3-48da-88c2-021c4c71142e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-14T13:18:47.829+01:00  INFO 20786 --- [streamEra] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-14T13:18:47.924+01:00  INFO 20786 --- [streamEra] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-14T13:18:48.132+01:00  INFO 20786 --- [streamEra] [main] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-11-14T13:18:48.267+01:00  INFO 20786 --- [streamEra] [main] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: []
+2026-11-14T13:18:48.285+01:00  INFO 20786 --- [streamEra] [main] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-11-14T13:18:48.569+01:00  INFO 20786 --- [streamEra] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 36771 (http) with context path '/'
+2026-11-14T13:18:48.574+01:00  INFO 20786 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlE2ETest           : Started PlaybackGraphQlE2ETest in 4.956 seconds (process running for 9.925)
+2026-11-14T13:18:49.409+01:00  INFO 20786 --- [streamEra] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-14T13:18:49.409+01:00  INFO 20786 --- [streamEra] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-14T13:18:49.411+01:00  INFO 20786 --- [streamEra] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-14T13:18:49.808+01:00 ERROR 20786 --- [streamEra] [http-nio-auto-1-exec-4] s.g.e.ExceptionResolversExceptionHandler : Unresolved EntityNotFoundException for executionId 244d6362-ed71-be77-ca81-8746aa742c6f
+
+jakarta.persistence.EntityNotFoundException
+	at java.base/java.util.Optional.orElseThrow(Optional.java:407) ~[na:na]
+	at pet.project.streamEra.playbackDomain.PlaybackService.getVideoById(PlaybackService.java:20) ~[classes/:na]
+	at pet.project.streamEra.playbackDomain.PlaybackController.getVideoById(PlaybackController.java:18) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:120) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.validateAndInvoke(DataFetcherHandlerMethod.java:144) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:128) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:107) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.AnnotatedControllerConfigurer$SchemaMappingDataFetcher.get(AnnotatedControllerConfigurer.java:522) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.lambda$get$0(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at io.micrometer.context.ContextSnapshot.lambda$wrap$1(ContextSnapshot.java:106) ~[context-propagation-1.2.1.jar:1.2.1]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.get(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at graphql.execution.ExecutionStrategy.invokeDataFetcher(ExecutionStrategy.java:512) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:466) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:404) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.resolveFieldWithInfo(ExecutionStrategy.java:360) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.getAsyncFieldValueInfo(ExecutionStrategy.java:325) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.AsyncExecutionStrategy.execute(AsyncExecutionStrategy.java:58) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.executeOperation(Execution.java:220) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.execute(Execution.java:139) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.execute(GraphQL.java:620) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$parseValidateAndExecute$5(GraphQL.java:549) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.parseValidateAndExecute(GraphQL.java:544) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$1(GraphQL.java:504) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$2(GraphQL.java:493) ~[graphql-java-25.0.jar:na]
+	at graphql.EngineRunningState.engineRun(EngineRunningState.java:202) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.executeAsync(GraphQL.java:485) ~[graphql-java-25.0.jar:na]
+	at org.springframework.graphql.execution.DefaultExecutionGraphQlService.lambda$execute$0(DefaultExecutionGraphQlService.java:95) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:48) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4569) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4634) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.toFuture(Mono.java:5146) ~[reactor-core-3.8.7.jar:3.8.7]
+	at org.springframework.graphql.server.webmvc.GraphQlHttpHandler.prepareResponse(GraphQlHttpHandler.java:119) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.server.webmvc.AbstractGraphQlHttpHandler.handleRequest(AbstractGraphQlHttpHandler.java:135) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.web.servlet.function.support.HandlerFunctionAdapter.handle(HandlerFunctionAdapter.java:106) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649) ~[tomcat-embed-core-11.0.24.jar:6.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710) ~[tomcat-embed-core-11.0.24.jar:6.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59) ~[tomcat-embed-websocket-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:235) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:376) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-7.0.9.jar:7.0.9]
+	at pet.project.streamEra.security.JwtAuthFilter.doFilterInternal(JwtAuthFilter.java:36) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:406) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2036) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+
+2026-11-14T13:18:50.147+01:00  INFO 20786 --- [streamEra] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [pet.project.streamEra.integrational.PlaybackGraphQlIntegrationTest]: PlaybackGraphQlIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-14T13:18:50.157+01:00  INFO 20786 --- [streamEra] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration pet.project.streamEra.StreamEraApplication for test class pet.project.streamEra.integrational.PlaybackGraphQlIntegrationTest
+2026-11-14T13:18:50.159+01:00  INFO 20786 --- [streamEra] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [pet.project.streamEra.integrational.PlaybackGraphQlIntegrationTest]: PlaybackGraphQlIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-14T13:18:50.167+01:00  INFO 20786 --- [streamEra] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration pet.project.streamEra.StreamEraApplication for test class pet.project.streamEra.integrational.PlaybackGraphQlIntegrationTest
+2026-11-14T13:18:50.171+01:00  INFO 20786 --- [streamEra] [main] tc.postgres:16-alpine                    : Creating container for image: postgres:16-alpine
+2026-11-14T13:18:50.321+01:00  INFO 20786 --- [streamEra] [main] tc.postgres:16-alpine                    : Container postgres:16-alpine is starting: 4926fe74fde79998a4d55a2b043c5063dc00321d5abfcbdd9f0651840b37e318
+2026-11-14T13:18:53.137+01:00  INFO 20786 --- [streamEra] [main] tc.postgres:16-alpine                    : Container postgres:16-alpine started in PT2.966481252S
+2026-11-14T13:18:53.138+01:00  INFO 20786 --- [streamEra] [main] tc.postgres:16-alpine                    : Container is started (JDBC URL: jdbc:postgresql://localhost:32779/test?loggerLevel=OFF)
+2026-11-14T13:18:53.148+01:00  INFO 20786 --- [streamEra] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-11-14T13:18:53.165+01:00  INFO 20786 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlIntegrationTest   : Starting PlaybackGraphQlIntegrationTest using Java 26.0.1 with PID 20786 (started by mediocrity in /home/mediocrity/shas/pet_p/streamEra)
+2026-11-14T13:18:53.165+01:00  INFO 20786 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlIntegrationTest   : The following 1 profile is active: "test"
+2026-11-14T13:18:53.292+01:00  INFO 20786 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T13:18:53.300+01:00  INFO 20786 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2026-11-14T13:18:53.410+01:00  INFO 20786 --- [streamEra] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:32779/test?loggerLevel=OFF (PostgreSQL 16.16)
+2026-11-14T13:18:53.422+01:00  INFO 20786 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-14T13:18:53.423+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.004s)
+2026-11-14T13:18:53.429+01:00  INFO 20786 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-14T13:18:53.448+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-14T13:18:53.452+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - inti"
+2026-11-14T13:18:53.479+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - alter video"
+2026-11-14T13:18:53.490+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - mock data"
+2026-11-14T13:18:53.500+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - alter video"
+2026-11-14T13:18:53.507+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - alter watchhistory"
+2026-11-14T13:18:53.513+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - alter watchhistory"
+2026-11-14T13:18:53.522+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "7 - demo frontend data"
+2026-11-14T13:18:53.527+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "8 - remove demo catalog"
+2026-11-14T13:18:53.532+01:00  INFO 20786 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema "public", now at version v8 (execution time 00:00.046s)
+2026-11-14T13:18:53.541+01:00  INFO 20786 --- [streamEra] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-14T13:18:53.559+01:00  INFO 20786 --- [streamEra] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T13:18:53.560+01:00  INFO 20786 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-11-14T13:18:53.567+01:00  INFO 20786 --- [streamEra] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@12885677
+2026-11-14T13:18:53.567+01:00  INFO 20786 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-11-14T13:18:53.570+01:00  WARN 20786 --- [streamEra] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-14T13:18:53.572+01:00  INFO 20786 --- [streamEra] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:32779/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.16
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T13:18:53.603+01:00  INFO 20786 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T13:18:53.620+01:00  INFO 20786 --- [streamEra] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:18:53.692+01:00  WARN 20786 --- [streamEra] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-14T13:18:53.709+01:00  WARN 20786 --- [streamEra] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 74a51e7c-3035-4193-89ac-4904787d0df8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-14T13:18:53.709+01:00  INFO 20786 --- [streamEra] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-14T13:18:53.722+01:00  INFO 20786 --- [streamEra] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-14T13:18:53.742+01:00  INFO 20786 --- [streamEra] [main] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-11-14T13:18:53.756+01:00  INFO 20786 --- [streamEra] [main] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: []
+2026-11-14T13:18:53.759+01:00  INFO 20786 --- [streamEra] [main] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-11-14T13:18:53.810+01:00  INFO 20786 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlIntegrationTest   : Started PlaybackGraphQlIntegrationTest in 0.663 seconds (process running for 15.161)
+2026-11-14T13:18:53.928+01:00 ERROR 20786 --- [streamEra] [main] s.g.e.ExceptionResolversExceptionHandler : Unresolved EntityNotFoundException for executionId 20694e1f-070c-d64a-9df8-f012d6990746
+
+jakarta.persistence.EntityNotFoundException
+	at java.base/java.util.Optional.orElseThrow(Optional.java:407) ~[na:na]
+	at pet.project.streamEra.playbackDomain.PlaybackService.getVideoById(PlaybackService.java:20) ~[classes/:na]
+	at pet.project.streamEra.playbackDomain.PlaybackController.getVideoById(PlaybackController.java:18) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:120) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.validateAndInvoke(DataFetcherHandlerMethod.java:144) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:128) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:107) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.AnnotatedControllerConfigurer$SchemaMappingDataFetcher.get(AnnotatedControllerConfigurer.java:522) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.lambda$get$0(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at io.micrometer.context.ContextSnapshot.lambda$wrap$1(ContextSnapshot.java:106) ~[context-propagation-1.2.1.jar:1.2.1]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.get(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at graphql.execution.ExecutionStrategy.invokeDataFetcher(ExecutionStrategy.java:512) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:466) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:404) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.resolveFieldWithInfo(ExecutionStrategy.java:360) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.getAsyncFieldValueInfo(ExecutionStrategy.java:325) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.AsyncExecutionStrategy.execute(AsyncExecutionStrategy.java:58) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.executeOperation(Execution.java:220) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.execute(Execution.java:139) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.execute(GraphQL.java:620) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$parseValidateAndExecute$5(GraphQL.java:549) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.parseValidateAndExecute(GraphQL.java:544) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$1(GraphQL.java:504) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$2(GraphQL.java:493) ~[graphql-java-25.0.jar:na]
+	at graphql.EngineRunningState.engineRun(EngineRunningState.java:202) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.executeAsync(GraphQL.java:485) ~[graphql-java-25.0.jar:na]
+	at org.springframework.graphql.execution.DefaultExecutionGraphQlService.lambda$execute$0(DefaultExecutionGraphQlService.java:95) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:48) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4569) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.block(Mono.java:1799) ~[reactor-core-3.8.7.jar:3.8.7]
+	at org.springframework.graphql.test.tester.DefaultGraphQlTester$DefaultRequest.execute(DefaultGraphQlTester.java:179) ~[spring-graphql-test-2.0.5.jar:2.0.5]
+	at pet.project.streamEra.integrational.PlaybackGraphQlIntegrationTest.videoById_unknownIdProducesGraphQlError(PlaybackGraphQlIntegrationTest.java:264) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:701) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:502) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.support.MethodReflectionUtils.invoke(MethodReflectionUtils.java:45) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:61) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:124) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:163) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:148) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:123) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:105) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:99) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:66) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:47) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:39) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:104) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:98) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invokeVoid(InterceptingExecutableInvoker.java:71) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$0(TestMethodTestDescriptor.java:219) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:215) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:157) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:70) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:57) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:56) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.apache.maven.surefire.api.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:125) ~[surefire-api-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithCancellationToken(LauncherAdapter.java:68) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:54) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.6.jar:3.5.6]
+
+2026-11-14T13:18:54.235+01:00  INFO 20786 --- [streamEra] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-14T13:18:54.237+01:00  INFO 20786 --- [streamEra] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-11-14T13:18:54.253+01:00  INFO 20786 --- [streamEra] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:18:54.255+01:00  INFO 20786 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-14T13:18:54.256+01:00  INFO 20786 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-11-14T13:18:54.263+01:00  INFO 20786 --- [streamEra] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:18:54.264+01:00  INFO 20786 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-11-14T13:18:54.277+01:00  INFO 20786 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-11-14T13:19:37.627+01:00  INFO 21774 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlIntegrationTest   : Starting PlaybackGraphQlIntegrationTest using Java 26.0.2 with PID 21774 (started by mediocrity in /home/mediocrity/shas/pet_p/streamEra)
+2026-11-14T13:19:37.628+01:00  INFO 21774 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlIntegrationTest   : The following 1 profile is active: "test"
+2026-11-14T13:19:38.188+01:00  INFO 21774 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T13:19:38.310+01:00  INFO 21774 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 5 JPA repository interfaces.
+2026-11-14T13:19:39.121+01:00  INFO 21774 --- [streamEra] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:32781/test?loggerLevel=OFF (PostgreSQL 16.16)
+2026-11-14T13:19:39.158+01:00  INFO 21774 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-14T13:19:39.161+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.016s)
+2026-11-14T13:19:39.173+01:00  INFO 21774 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-14T13:19:39.227+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-14T13:19:39.235+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - inti"
+2026-11-14T13:19:39.269+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - alter video"
+2026-11-14T13:19:39.282+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - mock data"
+2026-11-14T13:19:39.294+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - alter video"
+2026-11-14T13:19:39.302+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - alter watchhistory"
+2026-11-14T13:19:39.310+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - alter watchhistory"
+2026-11-14T13:19:39.321+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "7 - demo frontend data"
+2026-11-14T13:19:39.330+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "8 - remove demo catalog"
+2026-11-14T13:19:39.341+01:00  INFO 21774 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema "public", now at version v8 (execution time 00:00.054s)
+2026-11-14T13:19:39.439+01:00  INFO 21774 --- [streamEra] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-14T13:19:39.481+01:00  INFO 21774 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.24.Final
+2026-11-14T13:19:39.842+01:00  INFO 21774 --- [streamEra] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T13:19:39.867+01:00  INFO 21774 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-14T13:19:39.884+01:00  INFO 21774 --- [streamEra] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6cb2d5ea
+2026-11-14T13:19:39.885+01:00  INFO 21774 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-14T13:19:39.906+01:00  WARN 21774 --- [streamEra] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-14T13:19:39.924+01:00  INFO 21774 --- [streamEra] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:32781/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.16
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T13:19:40.674+01:00  INFO 21774 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T13:19:40.714+01:00  INFO 21774 --- [streamEra] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:19:40.782+01:00  INFO 21774 --- [streamEra] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-14T13:19:41.523+01:00  WARN 21774 --- [streamEra] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-14T13:19:41.597+01:00  WARN 21774 --- [streamEra] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2aa76341-55b9-458c-bafb-03b149b3e02c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-14T13:19:41.603+01:00  INFO 21774 --- [streamEra] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-14T13:19:41.711+01:00  INFO 21774 --- [streamEra] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-14T13:19:41.941+01:00  INFO 21774 --- [streamEra] [main] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-11-14T13:19:42.085+01:00  INFO 21774 --- [streamEra] [main] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: []
+2026-11-14T13:19:42.105+01:00  INFO 21774 --- [streamEra] [main] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-11-14T13:19:42.418+01:00  INFO 21774 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlIntegrationTest   : Started PlaybackGraphQlIntegrationTest in 5.058 seconds (process running for 10.531)
+2026-11-14T13:19:43.371+01:00 ERROR 21774 --- [streamEra] [main] s.g.e.ExceptionResolversExceptionHandler : Unresolved EntityNotFoundException for executionId 615d8759-a7fe-c541-1f05-037f36765dcf
+
+jakarta.persistence.EntityNotFoundException
+	at java.base/java.util.Optional.orElseThrow(Optional.java:407) ~[na:na]
+	at pet.project.streamEra.playbackDomain.PlaybackService.getVideoById(PlaybackService.java:20) ~[classes/:na]
+	at pet.project.streamEra.playbackDomain.PlaybackController.getVideoById(PlaybackController.java:18) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:120) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.validateAndInvoke(DataFetcherHandlerMethod.java:144) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:128) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:107) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.AnnotatedControllerConfigurer$SchemaMappingDataFetcher.get(AnnotatedControllerConfigurer.java:522) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.lambda$get$0(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at io.micrometer.context.ContextSnapshot.lambda$wrap$1(ContextSnapshot.java:106) ~[context-propagation-1.2.1.jar:1.2.1]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.get(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at graphql.execution.ExecutionStrategy.invokeDataFetcher(ExecutionStrategy.java:512) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:466) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:404) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.resolveFieldWithInfo(ExecutionStrategy.java:360) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.getAsyncFieldValueInfo(ExecutionStrategy.java:325) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.AsyncExecutionStrategy.execute(AsyncExecutionStrategy.java:58) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.executeOperation(Execution.java:220) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.execute(Execution.java:139) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.execute(GraphQL.java:620) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$parseValidateAndExecute$5(GraphQL.java:549) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.parseValidateAndExecute(GraphQL.java:544) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$1(GraphQL.java:504) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$2(GraphQL.java:493) ~[graphql-java-25.0.jar:na]
+	at graphql.EngineRunningState.engineRun(EngineRunningState.java:202) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.executeAsync(GraphQL.java:485) ~[graphql-java-25.0.jar:na]
+	at org.springframework.graphql.execution.DefaultExecutionGraphQlService.lambda$execute$0(DefaultExecutionGraphQlService.java:95) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:48) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4569) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.block(Mono.java:1799) ~[reactor-core-3.8.7.jar:3.8.7]
+	at org.springframework.graphql.test.tester.DefaultGraphQlTester$DefaultRequest.execute(DefaultGraphQlTester.java:179) ~[spring-graphql-test-2.0.5.jar:2.0.5]
+	at pet.project.streamEra.integrational.PlaybackGraphQlIntegrationTest.videoById_unknownIdProducesGraphQlError(PlaybackGraphQlIntegrationTest.java:264) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:701) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:502) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.support.MethodReflectionUtils.invoke(MethodReflectionUtils.java:45) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:61) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:124) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:163) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:148) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:123) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:105) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:99) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:66) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:47) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:39) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:104) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:98) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invokeVoid(InterceptingExecutableInvoker.java:71) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$0(TestMethodTestDescriptor.java:219) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:215) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:157) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:70) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at com.intellij.junit6.JUnit6IdeaTestRunner.startRunnerWithArgs(JUnit6IdeaTestRunner.java:67) ~[junit6-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) ~[idea_rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:237) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58) ~[junit-rt.jar:na]
+
+2026-11-14T13:19:43.686+01:00  INFO 21774 --- [streamEra] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:19:43.688+01:00  INFO 21774 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-14T13:19:43.689+01:00  INFO 21774 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-11-14T13:21:30.998+01:00  INFO 22459 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlE2ETest           : Starting PlaybackGraphQlE2ETest using Java 26.0.2 with PID 22459 (started by mediocrity in /home/mediocrity/shas/pet_p/streamEra)
+2026-11-14T13:21:31.000+01:00  INFO 22459 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlE2ETest           : The following 1 profile is active: "test"
+2026-11-14T13:21:31.534+01:00  INFO 22459 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T13:21:31.639+01:00  INFO 22459 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 5 JPA repository interfaces.
+2026-11-14T13:21:32.186+01:00  INFO 22459 --- [streamEra] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-11-14T13:21:32.197+01:00  INFO 22459 --- [streamEra] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-14T13:21:32.198+01:00  INFO 22459 --- [streamEra] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-14T13:21:32.239+01:00  INFO 22459 --- [streamEra] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1224 ms
+2026-11-14T13:21:32.720+01:00  INFO 22459 --- [streamEra] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:32783/test?loggerLevel=OFF (PostgreSQL 16.16)
+2026-11-14T13:21:32.765+01:00  INFO 22459 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-14T13:21:32.769+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.021s)
+2026-11-14T13:21:32.785+01:00  INFO 22459 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-14T13:21:32.845+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-14T13:21:32.855+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - inti"
+2026-11-14T13:21:32.891+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - alter video"
+2026-11-14T13:21:32.907+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - mock data"
+2026-11-14T13:21:32.926+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - alter video"
+2026-11-14T13:21:32.937+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - alter watchhistory"
+2026-11-14T13:21:32.948+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - alter watchhistory"
+2026-11-14T13:21:32.962+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "7 - demo frontend data"
+2026-11-14T13:21:32.974+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "8 - remove demo catalog"
+2026-11-14T13:21:32.986+01:00  INFO 22459 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema "public", now at version v8 (execution time 00:00.070s)
+2026-11-14T13:21:33.082+01:00  INFO 22459 --- [streamEra] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-14T13:21:33.126+01:00  INFO 22459 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.24.Final
+2026-11-14T13:21:33.477+01:00  INFO 22459 --- [streamEra] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T13:21:33.502+01:00  INFO 22459 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-14T13:21:33.521+01:00  INFO 22459 --- [streamEra] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@672710d5
+2026-11-14T13:21:33.522+01:00  INFO 22459 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-14T13:21:33.542+01:00  WARN 22459 --- [streamEra] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-14T13:21:33.560+01:00  INFO 22459 --- [streamEra] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:32783/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.16
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-14T13:21:34.305+01:00  INFO 22459 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T13:21:34.344+01:00  INFO 22459 --- [streamEra] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:21:34.412+01:00  INFO 22459 --- [streamEra] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-14T13:21:35.082+01:00  WARN 22459 --- [streamEra] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-14T13:21:35.151+01:00  WARN 22459 --- [streamEra] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 14d4ee0b-d651-47f9-b801-300577d3c77b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-14T13:21:35.157+01:00  INFO 22459 --- [streamEra] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-14T13:21:35.249+01:00  INFO 22459 --- [streamEra] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-14T13:21:35.484+01:00  INFO 22459 --- [streamEra] [main] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-11-14T13:21:35.612+01:00  INFO 22459 --- [streamEra] [main] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: []
+2026-11-14T13:21:35.631+01:00  INFO 22459 --- [streamEra] [main] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-11-14T13:21:35.920+01:00  INFO 22459 --- [streamEra] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 33375 (http) with context path '/'
+2026-11-14T13:21:35.926+01:00  INFO 22459 --- [streamEra] [main] p.p.s.p.PlaybackGraphQlE2ETest           : Started PlaybackGraphQlE2ETest in 5.194 seconds (process running for 10.453)
+2026-11-14T13:21:36.697+01:00  INFO 22459 --- [streamEra] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-14T13:21:36.697+01:00  INFO 22459 --- [streamEra] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-14T13:21:36.699+01:00  INFO 22459 --- [streamEra] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-11-14T13:21:37.057+01:00 ERROR 22459 --- [streamEra] [http-nio-auto-1-exec-4] s.g.e.ExceptionResolversExceptionHandler : Unresolved EntityNotFoundException for executionId 480b1c61-9273-eeb2-a66d-19e9aa20c760
+
+jakarta.persistence.EntityNotFoundException
+	at java.base/java.util.Optional.orElseThrow(Optional.java:407) ~[na:na]
+	at pet.project.streamEra.playbackDomain.PlaybackService.getVideoById(PlaybackService.java:20) ~[classes/:na]
+	at pet.project.streamEra.playbackDomain.PlaybackController.getVideoById(PlaybackController.java:18) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:120) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.validateAndInvoke(DataFetcherHandlerMethod.java:144) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:128) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:107) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.AnnotatedControllerConfigurer$SchemaMappingDataFetcher.get(AnnotatedControllerConfigurer.java:522) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.lambda$get$0(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at io.micrometer.context.ContextSnapshot.lambda$wrap$1(ContextSnapshot.java:106) ~[context-propagation-1.2.1.jar:1.2.1]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.get(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at graphql.execution.ExecutionStrategy.invokeDataFetcher(ExecutionStrategy.java:512) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:466) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:404) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.resolveFieldWithInfo(ExecutionStrategy.java:360) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.getAsyncFieldValueInfo(ExecutionStrategy.java:325) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.AsyncExecutionStrategy.execute(AsyncExecutionStrategy.java:58) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.executeOperation(Execution.java:220) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.execute(Execution.java:139) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.execute(GraphQL.java:620) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$parseValidateAndExecute$5(GraphQL.java:549) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.parseValidateAndExecute(GraphQL.java:544) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$1(GraphQL.java:504) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$2(GraphQL.java:493) ~[graphql-java-25.0.jar:na]
+	at graphql.EngineRunningState.engineRun(EngineRunningState.java:202) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.executeAsync(GraphQL.java:485) ~[graphql-java-25.0.jar:na]
+	at org.springframework.graphql.execution.DefaultExecutionGraphQlService.lambda$execute$0(DefaultExecutionGraphQlService.java:95) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:48) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4569) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4634) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.toFuture(Mono.java:5146) ~[reactor-core-3.8.7.jar:3.8.7]
+	at org.springframework.graphql.server.webmvc.GraphQlHttpHandler.prepareResponse(GraphQlHttpHandler.java:119) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.server.webmvc.AbstractGraphQlHttpHandler.handleRequest(AbstractGraphQlHttpHandler.java:135) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.web.servlet.function.support.HandlerFunctionAdapter.handle(HandlerFunctionAdapter.java:106) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649) ~[tomcat-embed-core-11.0.24.jar:6.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710) ~[tomcat-embed-core-11.0.24.jar:6.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59) ~[tomcat-embed-websocket-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:235) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:376) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-7.0.9.jar:7.0.9]
+	at pet.project.streamEra.security.JwtAuthFilter.doFilterInternal(JwtAuthFilter.java:36) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:385) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.7.jar:7.0.7]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:406) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2036) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+
+2026-11-14T13:21:37.366+01:00  INFO 22459 --- [streamEra] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-14T13:21:37.368+01:00  INFO 22459 --- [streamEra] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-11-14T13:21:37.385+01:00  INFO 22459 --- [streamEra] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T13:21:37.387+01:00  INFO 22459 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-14T13:21:37.389+01:00  INFO 22459 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-11-16T15:43:38.704+01:00  INFO 5983 --- [streamEra] [main] p.p.s.i.PlaybackGraphQlIntegrationTest   : Starting PlaybackGraphQlIntegrationTest using Java 26.0.2 with PID 5983 (started by mediocrity in /home/mediocrity/shas/pet_p/streamEra)
+2026-11-16T15:43:38.705+01:00  INFO 5983 --- [streamEra] [main] p.p.s.i.PlaybackGraphQlIntegrationTest   : The following 1 profile is active: "test"
+2026-11-16T15:43:39.330+01:00  INFO 5983 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-16T15:43:39.447+01:00  INFO 5983 --- [streamEra] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 5 JPA repository interfaces.
+2026-11-16T15:43:40.335+01:00  INFO 5983 --- [streamEra] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:32769/test?loggerLevel=OFF (PostgreSQL 16.16)
+2026-11-16T15:43:40.369+01:00  INFO 5983 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-11-16T15:43:40.372+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.015s)
+2026-11-16T15:43:40.383+01:00  INFO 5983 --- [streamEra] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-11-16T15:43:40.423+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-11-16T15:43:40.430+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - inti"
+2026-11-16T15:43:40.461+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - alter video"
+2026-11-16T15:43:40.475+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - mock data"
+2026-11-16T15:43:40.487+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - alter video"
+2026-11-16T15:43:40.494+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - alter watchhistory"
+2026-11-16T15:43:40.501+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - alter watchhistory"
+2026-11-16T15:43:40.511+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "7 - demo frontend data"
+2026-11-16T15:43:40.517+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "8 - remove demo catalog"
+2026-11-16T15:43:40.526+01:00  INFO 5983 --- [streamEra] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 8 migrations to schema "public", now at version v8 (execution time 00:00.049s)
+2026-11-16T15:43:40.617+01:00  INFO 5983 --- [streamEra] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-16T15:43:40.669+01:00  INFO 5983 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.24.Final
+2026-11-16T15:43:41.054+01:00  INFO 5983 --- [streamEra] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-16T15:43:41.086+01:00  INFO 5983 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-16T15:43:41.107+01:00  INFO 5983 --- [streamEra] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3ed1446c
+2026-11-16T15:43:41.109+01:00  INFO 5983 --- [streamEra] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-16T15:43:41.131+01:00  WARN 5983 --- [streamEra] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-16T15:43:41.155+01:00  INFO 5983 --- [streamEra] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:32769/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.16
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-16T15:43:41.956+01:00  INFO 5983 --- [streamEra] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-16T15:43:42.008+01:00  INFO 5983 --- [streamEra] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16T15:43:42.103+01:00  INFO 5983 --- [streamEra] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-16T15:43:43.045+01:00  WARN 5983 --- [streamEra] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-16T15:43:43.129+01:00  WARN 5983 --- [streamEra] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c86acbcc-515e-4efd-802f-f54c952d5e71
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-11-16T15:43:43.137+01:00  INFO 5983 --- [streamEra] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-11-16T15:43:43.249+01:00  INFO 5983 --- [streamEra] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-16T15:43:43.513+01:00  INFO 5983 --- [streamEra] [main] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-11-16T15:43:43.654+01:00  INFO 5983 --- [streamEra] [main] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: []
+2026-11-16T15:43:43.676+01:00  INFO 5983 --- [streamEra] [main] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-11-16T15:43:43.983+01:00  INFO 5983 --- [streamEra] [main] p.p.s.i.PlaybackGraphQlIntegrationTest   : Started PlaybackGraphQlIntegrationTest in 5.546 seconds (process running for 11.871)
+2026-11-16T15:43:45.024+01:00 ERROR 5983 --- [streamEra] [main] s.g.e.ExceptionResolversExceptionHandler : Unresolved EntityNotFoundException for executionId af385b50-28fa-a724-c0ca-df33b3bc1322
+
+jakarta.persistence.EntityNotFoundException
+	at java.base/java.util.Optional.orElseThrow(Optional.java:407) ~[na:na]
+	at pet.project.streamEra.playbackDomain.PlaybackService.getVideoById(PlaybackService.java:20) ~[classes/:na]
+	at pet.project.streamEra.playbackDomain.PlaybackController.getVideoById(PlaybackController.java:18) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:120) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.validateAndInvoke(DataFetcherHandlerMethod.java:144) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:128) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethod.invoke(DataFetcherHandlerMethod.java:107) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.data.method.annotation.support.AnnotatedControllerConfigurer$SchemaMappingDataFetcher.get(AnnotatedControllerConfigurer.java:522) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.lambda$get$0(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at io.micrometer.context.ContextSnapshot.lambda$wrap$1(ContextSnapshot.java:106) ~[context-propagation-1.2.1.jar:1.2.1]
+	at org.springframework.graphql.execution.ContextDataFetcherDecorator.get(ContextDataFetcherDecorator.java:92) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at graphql.execution.ExecutionStrategy.invokeDataFetcher(ExecutionStrategy.java:512) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:466) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:404) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.resolveFieldWithInfo(ExecutionStrategy.java:360) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.ExecutionStrategy.getAsyncFieldValueInfo(ExecutionStrategy.java:325) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.AsyncExecutionStrategy.execute(AsyncExecutionStrategy.java:58) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.executeOperation(Execution.java:220) ~[graphql-java-25.0.jar:na]
+	at graphql.execution.Execution.execute(Execution.java:139) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.execute(GraphQL.java:620) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$parseValidateAndExecute$5(GraphQL.java:549) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.parseValidateAndExecute(GraphQL.java:544) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$1(GraphQL.java:504) ~[graphql-java-25.0.jar:na]
+	at java.base/java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:1208) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2368) ~[na:na]
+	at graphql.EngineRunningState.compose(EngineRunningState.java:91) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.lambda$executeAsync$2(GraphQL.java:493) ~[graphql-java-25.0.jar:na]
+	at graphql.EngineRunningState.engineRun(EngineRunningState.java:202) ~[graphql-java-25.0.jar:na]
+	at graphql.GraphQL.executeAsync(GraphQL.java:485) ~[graphql-java-25.0.jar:na]
+	at org.springframework.graphql.execution.DefaultExecutionGraphQlService.lambda$execute$0(DefaultExecutionGraphQlService.java:95) ~[spring-graphql-2.0.5.jar:2.0.5]
+	at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:48) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4569) ~[reactor-core-3.8.7.jar:3.8.7]
+	at reactor.core.publisher.Mono.block(Mono.java:1799) ~[reactor-core-3.8.7.jar:3.8.7]
+	at org.springframework.graphql.test.tester.DefaultGraphQlTester$DefaultRequest.execute(DefaultGraphQlTester.java:179) ~[spring-graphql-test-2.0.5.jar:2.0.5]
+	at pet.project.streamEra.integrational.PlaybackGraphQlIntegrationTest.videoById_unknownIdProducesGraphQlError(PlaybackGraphQlIntegrationTest.java:264) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:701) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:502) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.support.MethodReflectionUtils.invoke(MethodReflectionUtils.java:45) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:61) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:124) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:163) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:148) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:123) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:105) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:99) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:66) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:47) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:39) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:104) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:98) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invokeVoid(InterceptingExecutableInvoker.java:71) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$0(TestMethodTestDescriptor.java:219) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:215) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:157) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:70) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at com.intellij.junit6.JUnit6IdeaTestRunner.startRunnerWithArgs(JUnit6IdeaTestRunner.java:67) ~[junit6-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) ~[idea_rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:237) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58) ~[junit-rt.jar:na]
+
+2026-11-16T15:43:45.377+01:00  INFO 5983 --- [streamEra] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16T15:43:45.379+01:00  INFO 5983 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-16T15:43:45.381+01:00  INFO 5983 --- [streamEra] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

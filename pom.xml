@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pet.project</groupId>
 	<artifactId>streamEra</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-prototuype</version>
 	<name/>
 	<description/>
 	<url/>
@@ -133,6 +133,27 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-graphql-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--
+		  Integration tests: start the whole Spring context against a REAL
+		  PostgreSQL, so Flyway migrations, JPA mappings and SQL all execute.
+		  Testcontainers gives us a throw-away database that starts/stops with
+		  the test run. No manual "docker compose up" and no shared state.
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-testcontainers</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-postgresql</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

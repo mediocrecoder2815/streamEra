@@ -1,4 +1,4 @@
-package pet.project.streamEra;
+package pet.project.streamEra.unit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
