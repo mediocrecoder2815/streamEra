@@ -15,7 +15,7 @@ import pet.project.streamEra.videoDomain.dtos.VideoDto;
 import pet.project.streamEra.videoDomain.dtos.VideoUpdateDto;
 import pet.project.streamEra.videoDomain.entity.Video;
 import pet.project.streamEra.videoDomain.entity.VideoStatus;
-import pet.project.streamEra.videoDomain.rabbitmq.VideoMessageSender;
+import pet.project.streamEra.rabbitmq.MessageSenderService;
 import pet.project.streamEra.videoDomain.repository.CategoryRepository;
 import pet.project.streamEra.videoDomain.repository.VideoRepository;
 import pet.project.streamEra.videoDomain.service.VideoService;
@@ -41,7 +41,7 @@ public class VideoServiceTest {
     private CategoryRepository categoryRepository;
 
     @Mock
-    private VideoMessageSender videoMessageSender;
+    private MessageSenderService messageSenderService;
     @Mock
     private S3Client s3Client;
     @Mock
@@ -53,7 +53,7 @@ public class VideoServiceTest {
 
     @BeforeEach
     void setUp(){
-        videoService = new VideoService(videoRepository, categoryRepository, videoMessageSender, properties, s3Client, s3Presigner);
+        videoService = new VideoService(videoRepository, categoryRepository, messageSenderService, properties, s3Client, s3Presigner);
 
 
     }

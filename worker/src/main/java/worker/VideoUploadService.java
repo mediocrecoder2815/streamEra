@@ -150,6 +150,7 @@ public class VideoUploadService {
                             // file is one .ts segment or the .m3u8 playlist
                         });
             }
+            log.info("Video with id was {} uploaded succesfully", videoId);
         }
             else{
                 throw new IllegalArgumentException("No files found in directory " + inputDir.toString());

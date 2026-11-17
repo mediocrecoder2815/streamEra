@@ -1,192 +1,161 @@
 # Roadmap — streamEra
 
-**Vision:** A streaming platform backend. Users register, browse catalogs, upload videos, stream real HLS video, and track watch history.
-**Architecture:** A strictly separated modular monolith, evolving into a Monolith + 1 Worker architecture for real video transcoding.
+**Goal:** finish one credible, demoable project.
 
-**Demo in one sentence:** *A user uploads a video, watches it move from `PENDING` to `OK`, then plays it and resumes where they left off.*
+**Not the goal:** build a production-grade reliability platform in this repository.
 
-> **How to use this roadmap**
-> One milestone at a time. Do not start the next milestone until the current one is demoable. The hard part is not writing code — it is keeping ordering and state correct. If a milestone takes more than a few days, split it again.
+**Demo in one sentence:** a user uploads a video, watches it move from `PENDING` to `OK`, plays the real HLS stream, and resumes where they left off.
+
+> **Scope rule**
+> - **Finish** = required to call this project done.
+> - **Stretch** = only after the finish line.
+> - **Next project** = deliberately out of scope here.
+>
+> Complexity is not a feature by itself. The point of this roadmap is to stop the project from expanding faster than it can be finished.
+
+---
 
 ## Current state
 
-- [x] Auth, catalog queries, watch history, progress mutation, JWT.
-- [x] FFmpeg installed; RabbitMQ in `docker-compose`; monolith + worker config.
-- [x] Worker skeleton: consumes, downloads, runs ffmpeg, uploads HLS.
-- [x] Demo frontend: catalog, player, login/register, watch history.
-- [x] Upload handshake (presigned URL + confirm).
-- [x] Closed status loop (`PENDING → PROCESSING → OK/ERROR`).
-- [x] Real browser upload; seeded titles currently point at a bundled `/media/demo.mp4` placeholder.
+- [x] Auth, catalog, watch history, progress mutation, JWT.
+- [x] Monolith + worker architecture.
+- [x] RabbitMQ, MinIO, FFmpeg, Docker Compose.
+- [x] Presigned upload URL + confirm step.
+- [x] Worker consumes upload events, downloads the source, runs ffmpeg, uploads HLS.
+- [x] Status loop exists: `PENDING → PROCESSING → OK/ERROR`.
+- [x] Real browser upload and real HLS playback.
+- [x] Demo fallback catalog removed.
+- [x] Frontend upload, catalog, player, and watch-history resume.
+- [ ] Reliability layer is incomplete: durable queues exist, but publisher confirms, retry/DLQ, idempotency, and the watchdog are not all in place.
+- [ ] Known gaps: worker idempotency, playlist upload ordering, duplicate/stale event guards, catalog status filtering, and stale-`PROCESSING` recovery.
 
-## Invariants — never break these
+## Target invariants
 
-1. **Never enqueue processing before the source object exists.**
-2. **The worker never reports success before its uploads finish.**
-3. **Status moves one way:** `PENDING → PROCESSING → OK/ERROR`; duplicate events are no-ops; `DELETED` never resurrects.
-4. **The worker is stateless; the monolith owns the database.**
-5. **Events are facts, not commands:** `video.processed { videoId, playlistKey }`, not “please set status OK”.
-6. **`OK` means “playlist and segments are readable,”** not “a message arrived”.
+These are the rules the finished version should enforce:
 
----
-
-## Phase 1 — Core Monolith & Data Foundations
-- [x] Set up database migrations (Flyway) to create the core `Users`, `Catalog`, and `WatchHistory` tables.
-- [x] Build the basic entity classes (`User`, `Video`, `WatchRecord`).
-- [x] Enforce domain boundaries: ensure no direct database joins exist between distinct domains (use primitive ID references instead).
-
-## Phase 2 — The GraphQL Edge & Security
-- [x] Integrate Spring for GraphQL (spring-graphql) to serve data via a GraphQL API.
-- [x] Define the GraphQL schema (`schema.graphqls`) to support querying the video catalog, user profiles, and watch history.
-- [x] Implement JWT authentication and authorization.
-- [x] Update GraphQL controller `@QueryMapping` methods to require a valid JWT to query videos.
-- [x] Implement a GraphQL Mutation (`update_watch_historyProgress`) that the video player will ping to save the user's current timestamp.
+1. Never enqueue processing before the source object exists.
+2. The worker never reports success before its uploads finish.
+3. Status moves forward: `PENDING → PROCESSING → OK/ERROR`; duplicate events are no-ops; `DELETED` never resurrects.
+4. The worker is stateless; the monolith owns the database.
+5. Events are facts, not commands: `video.processed { videoId, playlistKey }`, not “please set status OK”.
+6. `OK` means “playlist and segments are readable,” not “a message arrived”.
 
 ---
 
-## Phase 3 — The Walking Skeleton (close the loop)
+## Phase 1 — Finish the happy path (must)
 
-**Goal:** one real video goes from upload to playable HLS. Happy path only.
-**Definition of done:** a logged-in user picks an MP4 in the browser, sees upload progress, waits through `PROCESSING`, sees `OK`, and plays the HLS stream.
+**Goal:** one real video works end to end without manual SQL.
+**Definition of done:** a clean database, one browser upload, `PENDING → PROCESSING → OK`, playable HLS, resume works.
 
-> **Do not add yet:** CDN, S3 event notifications, multipart uploads, GraphQL subscriptions, multiple workers, DRM. Add them only when you feel the specific pain they solve.
+- [ ] Worker idempotency: processing the same video twice must not corrupt state or output.
+  - Use deterministic storage keys.
+  - Overwrite existing HLS objects.
+  - Clean up temp directories.
+- [ ] Upload HLS segments first, playlist last.
+  - A visible `index.m3u8` must never point at missing segments.
+- [ ] Guard duplicate and stale events.
+  - Duplicate `processed` / `failed` events should be no-ops.
+  - `DELETED` must not resurrect.
+  - Terminal states should not silently move backward.
+- [ ] Make catalog visibility honest.
+  - Either return all relevant statuses, or document that the catalog only shows `OK`/`PENDING`.
+- [ ] Run one end-to-end acceptance test with a real file.
+  - No demo fallback.
+  - No manual database updates.
+- [ ] Verify playback and resume after a page reload.
 
-### 3.0 Design the contract — paper only
+**Done when:** the one-sentence demo works from a clean setup.
 
-- [x] Write the status machine and what each state means:
-  - `PENDING` — row exists, no source object yet.
-  - `PROCESSING` — source verified, worker is handling it.
-  - `OK` — playlist and segments uploaded and readable.
-  - `ERROR` — upload or processing failed.
-  - `DELETED` — never processed again.
-- [x] Write the events:
-  - `video.uploaded { videoId, sourceKey }`
-  - `video.processed { videoId, playlistKey }`
-  - `video.failed { videoId, reason }`
-- [x] Write the invariants above.
-- [x] Decide ownership: monolith owns the DB; worker is stateless.
-- [x] Note: `PROCESSING` needs a DB migration because the current check constraint only allows `PENDING`, `OK`, `ERROR`, `DELETED`.
-
-**Done when:** you can explain the happy path and every transition without looking at code.
-
-**Learn:** state machines, event contracts, ownership boundaries.
-
-### 3.1 Object storage — MinIO
-
-- [x] Add MinIO to `docker-compose` (API port + web console).
-- [x] Create a bucket.
-- [x] Decide key layout: `raw/{videoId}/source.{ext}` and `hls/{videoId}/...`.
-- [x] Upload a file manually; read it back; inspect size and content type.
-- [x] Point the app's storage client at MinIO through config (endpoint, credentials, bucket).
-
-**Done when:** the same file is visible in the MinIO console and readable by the app.
-
-**Learn:** buckets, keys, endpoints, object metadata, why storage is not a database.
-
-> If MinIO blocks you: use a local `media/` folder and a backend upload endpoint for 3.2–3.4, then swap in MinIO later. The state machine is the point; storage is replaceable.
-
-### 3.2 Upload handshake — the ordering gate
-
-- [x] Remove the immediate publish from `addVideo`; right now it enqueues before any upload can happen.
-- [x] Mutation creates a `PENDING` row and returns a **presigned PUT URL**; it does **not** enqueue anything.
-- [ ] Upload the file directly to MinIO with `curl` first, not the browser.
-- [x] Add a confirm mutation that `HEAD`s the object, checks size/format, sets `PROCESSING`, and publishes `video.uploaded`.
-- [x] Reject missing, zero-byte, or wrong-type objects before enqueueing.
-- [x] Configure MinIO CORS for the browser origin when you move to the frontend.
-
-**Done when:** an object exists in `raw/`, the row is `PROCESSING`, and one `video.uploaded` message is visible in RabbitMQ.
-
-**Learn:** presigned URLs, `HEAD`, CORS, verifying facts instead of trusting the client.
-
-### 3.3 Worker — do the slow work
-
-- [x] Worker consumes the upload event, downloads the raw object, and runs ffmpeg.
-- [x] Worker uploads the generated HLS files back to storage.
-- [x] Verify the output directory contains `index.m3u8` and at least one `.ts` segment before publishing anything.
-- [ ] Upload segments first, playlist last, so a visible playlist never points at missing segments.
-- [x] Replace the plain string message with a structured success event: `video.processed { videoId, playlistKey }`.
-- [x] Publish `video.failed { videoId, reason }` on every processing error.
-- [ ] Make the worker safe to run twice for the same video (overwrite is fine; state must not corrupt).
-
-**Done when:** one message produces a complete playlist + segments in MinIO and exactly one success event.
-
-**Learn:** idempotent consumption, temp files, ffmpeg exit codes, output verification.
-
-### 3.4 Status integration — close the loop
-
-- [x] A consumer exists (`receiveMessage`), but it only flips status and never sets `videoUrl`.
-- [x] Monolith consumes `video.processed` and `video.failed`.
-- [x] On success: set `OK` and `videoUrl = {mediaBaseUrl}/hls/{videoId}/index.m3u8`.
-- [x] On failure: set `ERROR` and store the reason (log or column).
-- [ ] Ignore duplicate or stale events; never move out of `DELETED`. 
-  - EDIT. we ignore duplicates, only constraint is video name 
-- [x] Decide whether to trust the event or `HEAD` the playlist before setting `OK`.
-
-**Done when:** uploading one file moves the row to `OK` or `ERROR` with no manual SQL.
-
-**Learn:** transitions, idempotency, publish ordering, partial failure.
-
-### 3.5 Frontend — make it visible
-
-- [x] Upload modal: title, file picker, progress bar (use XHR for upload progress). — Implemented as an upload page rather than a modal.
-- [x] Two-step flow: request upload ticket → PUT to MinIO → confirm.
-- [x] Catalog shows status badges: `PENDING`, `PROCESSING`, `OK`, `ERROR`. — Badge rendering added; the catalog query currently returns only `OK`/`PENDING`, so `PROCESSING`/`ERROR` won't appear until the backend filter changes.
-- [x] Poll `video_byId` while processing; switch to the player when `OK`. — Implemented with the `video_status` query instead of `video_byId`.
-- [x] Play the real HLS playlist with hls.js and save progress as before.
-
-**Done when:** the one-sentence demo works with a real file, not `/media/demo.mp4`.
-
-**Learn:** asynchronous UX, polling, honest error messages.
+**Learn:** idempotency, upload ordering, state transitions, end-to-end verification.
 
 ---
 
-## Phase 4 — Failure, Consistency & Correctness
+## Phase 2 — Minimum reliability (must, but bounded)
 
-**Goal:** the pipeline survives restarts, duplicates, retries, and abandoned uploads.
-**Definition of done:** you can kill any component mid-flight and still end in a consistent state.
+**Goal:** the pipeline does not silently lose work or stay stuck forever.
+**Definition of done:** kill the worker mid-flight, replay an event, and leave a stale row; the system eventually converges to a consistent state.
 
-- [ ] Enable publisher confirms and durable queues.
-- [ ] Manual ack / retry policy; don't spin forever on a poison message.
-- [ ] Dead-letter queue for events that repeatedly fail.
-- [ ] Idempotent handlers: the same event twice is a no-op.
-- [ ] Every failure ends in `ERROR`; nothing gets stuck in `PROCESSING` forever.
-- [ ] Reconciliation job:
-  - `PENDING` older than N minutes → clean up or mark `ERROR`.
-  - `PROCESSING` older than N minutes → re-enqueue or mark `ERROR`.
-- [ ] Upload expiry: abandon an upload and confirm the row does not leak.
-- [ ] Event versioning: every message carries a type and version; unknown versions are rejected safely.
-- [ ] Validate outputs: playlist exists, segments exist, no zero-byte objects.
-- [ ] Tests: state transitions, worker idempotency, message contract.
+- [ ] Publisher confirms for upload, processed, and failed events.
+  - Enable correlated confirms and mandatory returns.
+  - Treat nack and unroutable messages as failures, not success.
+- [ ] Consumer failure policy.
+  - Keep acknowledgement tied to successful completion.
+  - Bounded retry with backoff.
+  - Dead-letter queue for messages that exhaust retries.
+  - Do not requeue poison messages forever.
+- [ ] Watchdog for stale `PROCESSING` rows.
+  - Add a status timestamp.
+  - Detect rows older than a safe processing window.
+  - Republish a limited number of times, then mark `ERROR`.
+- [ ] Idempotent event handling in the monolith.
+  - The same result event twice should not change the final outcome.
+- [ ] Tests for the important rules.
+  - Status transitions.
+  - Worker idempotency.
+  - Message contract.
+  - Duplicate event handling.
 
-**Learn:** at-least-once delivery, idempotency, reconciliation, why “exactly once” is mostly a story.
+**Done when:** a killed worker, a duplicated event, and a stale `PROCESSING` row all end in a defined state.
 
----
-
-## Phase 5 — Deployment & Delivery (recommended for the portfolio)
-
-- [ ] Move from MinIO to real S3, Cloudflare R2, or Backblaze B2 via config only.
-- [ ] Bucket CORS and private access; decide public vs signed playback.
-- [ ] Deploy monolith, worker, Postgres, and RabbitMQ.
-- [ ] Set `mediaBaseUrl` correctly for the deployed environment.
-- [ ] Verify upload → processing → playback on the deployed URL.
-- [ ] `README.md`: architecture diagram, tradeoffs, startup instructions, known limits.
-
-**Learn:** config over rewrite, CORS in the real world, deployment failure modes.
+**Learn:** at-least-once delivery, acknowledgement timing, retries, DLQ, reconciliation.
 
 ---
 
-## Phase 6 — Polish & Verification
+## Phase 3 — Portfolio packaging (must)
 
-- [ ] Testcontainers integration test for broker + storage.
-- [ ] `mvn test` green and a basic CI pipeline.
-- [ ] Structured logs: `videoId`, duration, failure reason.
-- [ ] Optional: GraphQL subscriptions instead of polling.
-- [ ] Optional: CDN / CloudFront for delivery.
-- [ ] Optional: multiple workers and a per-video lock.
-- [ ] Optional: signed playback URLs.
+**Goal:** someone else can understand and run the project.
+
+- [ ] `README.md`: what it does, architecture diagram, startup steps, tradeoffs, known limits.
+- [ ] One-command local startup with Docker Compose.
+- [ ] Basic structured logs containing `videoId`, state, duration, and failure reason.
+- [ ] Verify mutations require authentication.
+- [ ] Verify no secrets are committed.
+- [ ] `mvn test` green.
+- [ ] Basic CI pipeline.
+- [ ] Optional but useful: Testcontainers test for RabbitMQ + storage.
+
+**Done when:** a reviewer can run the demo from the README without asking you for missing steps.
 
 ---
 
-## Deliberately deferred
+## Phase 4 — Stretch (optional, only after the finish line)
 
-These are not bad ideas. They are distractions until the loop above works:
-CDN, S3 event notifications, multipart uploads, transactional outbox, GraphQL subscriptions, DRM, multi-worker scaling, Kubernetes, analytics.
+Do these only if the project is already demoable and you still have time:
+
+- [ ] Signed playback URLs.
+- [ ] CDN for HLS delivery.
+- [ ] GraphQL subscriptions instead of polling.
+- [ ] Multiple workers with a per-video claim/lock.
+- [ ] Richer metrics and dashboards.
+- [ ] Event versioning.
+
+---
+
+## Next project — deliberately deferred
+
+These are good topics. They are not required to finish this project, and adding them now would create new failure modes before the current ones are closed:
+
+- Cache layer and cache invalidation.
+- Elasticsearch / external search.
+- Full observability stack.
+- Multi-worker scaling and distributed locks.
+- Transactional outbox.
+- S3 event notifications.
+- Multipart uploads.
+- DRM.
+- Kubernetes.
+- Analytics.
+- Advanced security hardening beyond the minimum.
+
+Pick one or two of these for the next project. Do not try to learn all of them in one system.
+
+---
+
+## Progress rules
+
+- Progress is a **demoable milestone**, not the number of technologies in the repository.
+- Do not add new infrastructure during Phase 1 or Phase 2.
+- If a milestone takes more than a few days, split it or cut it.
+- If a problem does not threaten an invariant, document it and move on.
+- Stop at “credible portfolio project,” not at “production platform.”
+- A finished smaller system teaches more than an unfinished larger one.

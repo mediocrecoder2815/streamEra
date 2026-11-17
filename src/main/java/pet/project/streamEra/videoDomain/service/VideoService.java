@@ -15,7 +15,7 @@ import pet.project.streamEra.videoDomain.dtos.VideoUpdateDto;
 import pet.project.streamEra.videoDomain.entity.Video;
 import pet.project.streamEra.videoDomain.entity.VideoEvent;
 import pet.project.streamEra.videoDomain.entity.VideoStatus;
-import pet.project.streamEra.videoDomain.rabbitmq.VideoMessageSender;
+import pet.project.streamEra.rabbitmq.MessageSenderService;
 import pet.project.streamEra.videoDomain.repository.CategoryRepository;
 import pet.project.streamEra.videoDomain.repository.VideoRepository;
 import software.amazon.awssdk.services.s3.S3Client;
@@ -27,7 +27,8 @@ import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignReques
 
 import java.time.Duration;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 @Service
 @AllArgsConstructor
@@ -35,7 +36,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class VideoService {
     private final VideoRepository videoRepository;
     private final CategoryRepository categoryRepository;
-    private final VideoMessageSender videoMessageSender;
+    private final MessageSenderService messageSenderService;
     private final AwsProperties properties;
     private final S3Client s3Client;
     private final S3Presigner s3Presigner;
@@ -167,7 +168,9 @@ public class VideoService {
                 return "ERROR";
             }
             log.info("Video with id: {} has been confirmed", video.getVideoId());
-            videoMessageSender.sendMessage(RabbitMqConfig.ROUTING_KEY_UPLOAD, new VideoEvent(videoId, url, "upload"));
+            video.setVideoStatus(VideoStatus.PROCESSING);
+            videoRepository.save(video);
+            messageSenderService.sendMessage(RabbitMqConfig.ROUTING_KEY_UPLOAD, new VideoEvent(videoId, url, "upload"));
             return "OK";
         }
         catch (S3Exception e) {
@@ -177,6 +180,8 @@ public class VideoService {
                 videoRepository.save(toDelete);
             }
             throw e;
+        } catch (ExecutionException | InterruptedException | TimeoutException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -5,9 +5,12 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.DefaultJackson2JavaTypeMapper;
 import org.springframework.amqp.support.converter.Jackson2JavaTypeMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.boot.amqp.autoconfigure.RabbitTemplateCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pet.project.streamEra.videoDomain.entity.VideoEvent;
@@ -53,5 +56,6 @@ public class RabbitMqConfig {
             // acknowledges and ignores them; the worker owns those.
             return BindingBuilder.bind(queueConsumer).to(exchange).with(ROUTING_KEY_ALL_EVENTS);
         }
+
 
 }
