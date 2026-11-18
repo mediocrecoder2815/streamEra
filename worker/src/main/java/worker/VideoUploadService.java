@@ -142,7 +142,6 @@ public class VideoUploadService {
                                         bucket(properties.s3().bucket()).
                                         contentType("video/mp2t").
                                         key(objectKey).build(), file);
-
                             }
                             else{
                                 System.out.println("Skipping file: " + file.getFileName().toString());

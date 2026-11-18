@@ -4,16 +4,20 @@ package pet.project.streamEra.playbackDomain;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pet.project.streamEra.videoDomain.entity.Category;
 import pet.project.streamEra.videoDomain.entity.Video;
 import pet.project.streamEra.videoDomain.entity.VideoStatus;
+import pet.project.streamEra.videoDomain.repository.CategoryRepository;
 import pet.project.streamEra.videoDomain.repository.VideoRepository;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 public class PlaybackService {
     private final VideoRepository videoRepository;
+    private final CategoryRepository categoryRepository;
 
     public Video getVideoById(Long id){
         Video video = videoRepository.findById(id).
@@ -24,6 +28,10 @@ public class PlaybackService {
         }
         return video;
     }
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
+    }
+
     public Video getVideoByName(String name){
         Video video = videoRepository.findByName(name).
                 orElseThrow(EntityNotFoundException::new);

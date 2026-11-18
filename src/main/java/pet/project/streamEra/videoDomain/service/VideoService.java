@@ -12,6 +12,7 @@ import pet.project.streamEra.configs.RabbitMqConfig;
 import pet.project.streamEra.videoDomain.dtos.UploadTicket;
 import pet.project.streamEra.videoDomain.dtos.VideoDto;
 import pet.project.streamEra.videoDomain.dtos.VideoUpdateDto;
+import pet.project.streamEra.videoDomain.entity.Category;
 import pet.project.streamEra.videoDomain.entity.Video;
 import pet.project.streamEra.videoDomain.entity.VideoEvent;
 import pet.project.streamEra.videoDomain.entity.VideoStatus;
@@ -26,7 +27,9 @@ import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
 
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
@@ -59,6 +62,7 @@ public class VideoService {
     // checks video metadata,
     // then create key -> /raw/{videoId}/{videoName}.mp4
     // return video with 'PENDING' status
+
     public UploadTicket addVideo(VideoDto videoDto) {
         log.info("Initializing video with name: {}", videoDto.name());
         Optional<Video> video = videoRepository.findByName(videoDto.name());
@@ -71,6 +75,10 @@ public class VideoService {
         newVideo.setVideoLength(0L);
         newVideo.setVideoStatus(VideoStatus.PENDING);
         newVideo.setVideoUrl("");
+        videoRepository.save(newVideo);
+        if(videoDto.categoryList() != null && !videoDto.categoryList().isEmpty()) {
+            newVideo.setCategorySet(new HashSet<>(videoDto.categoryList()));
+        }
         newVideo = videoRepository.save(newVideo);
 
         String key = String.join("/", prefix, newVideo.getVideoId().toString(), videoDto.name() + ".mp4");
@@ -84,7 +92,6 @@ public class VideoService {
                 .putObjectRequest(putObjectRequest)
                 .build();
         String uploadUrl = s3Presigner.presignPutObject(presignRequest).url().toString();
-
         log.info("Created video with id: {} and key: {}", newVideo.getVideoId(), key);
         return new UploadTicket(
                 newVideo.getVideoId(),
@@ -94,17 +101,18 @@ public class VideoService {
                 Math.toIntExact(UPLOAD_URL_TTL.toSeconds())
         );
     }
-
     // received processed video key, new key == new video url
     // changes original video url and status
+
     @RabbitListener(queues = RabbitMqConfig.QUEUE)
     public void receiveMessage(VideoEvent videoEvent) {
         switch (videoEvent.type()){
             case "processed":{
                 Video videoToUpload = findById(videoEvent.videoId());
-                videoToUpload.setVideoStatus(VideoStatus.OK);
                 videoToUpload.setVideoUrl(publicUrl(videoEvent.message()));
-                videoRepository.save(videoToUpload);
+                if (transition(videoToUpload, VideoStatus.OK, "processed event")) {
+                    videoRepository.save(videoToUpload);
+                }
                 break;
             }
             case "failed":{
@@ -133,7 +141,15 @@ public class VideoService {
         }
         videoToUpdate.setName(videoUpdateDto.name());
         videoToUpdate.setVideoUrl(videoUpdateDto.videoUrl());
-        videoToUpdate.setVideoStatus(VideoStatus.valueOf(videoUpdateDto.videoStatus()));
+        if (videoUpdateDto.videoStatus() != null) {
+            VideoStatus target = VideoStatus.valueOf(videoUpdateDto.videoStatus());
+            if (!transition(videoToUpdate, target, "update video")) {
+                throw new IllegalStateException(
+                        "Cannot transition video " + videoUpdateDto.videoId()
+                                + " from " + videoToUpdate.getVideoStatus()
+                                + " to " + target);
+            }
+        }
 
         return videoRepository.save(videoToUpdate);
     }
@@ -144,15 +160,21 @@ public class VideoService {
         if(videoToDelete == null ){
             return "NOT FOUND";
         }
-        videoToDelete.setVideoStatus(VideoStatus.DELETED);
+        if (!transition(videoToDelete, VideoStatus.DELETED, "delete video")) {
+            return "INVALID STATE";
+        }
         // here message should be added to query to delete video
         videoRepository.save(videoToDelete);
         return "OK";
     }
-
     // confirms that video was uploaded
+
     public String confirm(Long videoId) {
         Video video =  findById(videoId);
+        if (video.getVideoStatus() != VideoStatus.PENDING) {
+            log.warn("Cannot confirm video {} in state {}", videoId, video.getVideoStatus());
+            return "INVALID STATE";
+        }
         String url = String.join("/", "raw", videoId.toString(), (video.getName() + ".mp4"));
 
         log.info("Confirming video with id: {}, url: {}", video.getVideoId(), url);
@@ -168,7 +190,9 @@ public class VideoService {
                 return "ERROR";
             }
             log.info("Video with id: {} has been confirmed", video.getVideoId());
-            video.setVideoStatus(VideoStatus.PROCESSING);
+            if (!transition(video, VideoStatus.PROCESSING, "upload confirmed")) {
+                return "INVALID STATE";
+            }
             videoRepository.save(video);
             messageSenderService.sendMessage(RabbitMqConfig.ROUTING_KEY_UPLOAD, new VideoEvent(videoId, url, "upload"));
             return "OK";
@@ -176,8 +200,9 @@ public class VideoService {
         catch (S3Exception e) {
             if (e.statusCode() == 404) {
                 Video toDelete = findById(videoId);
-                toDelete.setVideoStatus(VideoStatus.ERROR);
-                videoRepository.save(toDelete);
+                if (transition(toDelete, VideoStatus.ERROR, "source object missing")) {
+                    videoRepository.save(toDelete);
+                }
             }
             throw e;
         } catch (ExecutionException | InterruptedException | TimeoutException e) {
@@ -188,9 +213,29 @@ public class VideoService {
 
     private void dumpVideo(Long videoId,  String message){
         Video wrongVideo = findById(videoId);
-        wrongVideo.setVideoStatus(VideoStatus.ERROR);
+        if (!transition(wrongVideo, VideoStatus.ERROR, message)) {
+            return;
+        }
         videoRepository.save(wrongVideo);
         log.error(message);
+    }
+
+    private boolean transition(Video video, VideoStatus target, String reason) {
+        VideoStatus current = video.getVideoStatus();
+        if (current == target) {
+            log.debug("Video {} is already {}, ignoring transition ({})",
+                    video.getVideoId(), target, reason);
+            return true;
+        }
+        if (!current.canTransitionTo(target)) {
+            log.warn("Rejected video {} transition {} -> {} ({})",
+                    video.getVideoId(), current, target, reason);
+            return false;
+        }
+        video.setVideoStatus(target);
+        log.info("Video {} transitioned {} -> {} ({})",
+                video.getVideoId(), current, target, reason);
+        return true;
     }
 
     /**

@@ -34,10 +34,10 @@ public class MessageSenderService {
                                 + ": " + confirm.reason());
             }
             if (correlationId.getReturned() != null) {
+                String replyText = correlationId.getReturned().getReplyText();
                 throw new IllegalStateException(
-                        "Message was unroutable: "
-                                + correlationId.getReturned().getReplyText() != null ?
-                                correlationId.getReturned().getReplyText() : " null" );
+                        "Message was unroutable: " + (replyText != null ? replyText : "null")
+                );
         }
     }
         catch (InterruptedException e) {

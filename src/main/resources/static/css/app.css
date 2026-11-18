@@ -826,6 +826,40 @@ video {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
 }
 
+.category-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.category-option:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.category-option:has(input:checked) {
+  border-color: rgba(139, 92, 246, 0.6);
+  background: rgba(139, 92, 246, 0.14);
+  color: var(--text);
+}
+
+.category-option input {
+  margin: 0;
+  accent-color: var(--accent);
+}
+
 .field input[type="file"] {
   padding: 10px;
   color: var(--muted);

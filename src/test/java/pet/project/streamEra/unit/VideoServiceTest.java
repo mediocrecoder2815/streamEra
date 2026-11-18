@@ -89,7 +89,7 @@ public class VideoServiceTest {
     void shouldCreateVideo(){
         // ARRANGE
         Long videoSize = 1293945L;
-        var inputVideo = new VideoDto("Test", videoSize);
+        var inputVideo = new VideoDto("Test", videoSize, null);
 
         // Save is called with a NEW Video created inside the service, so we cannot
         // match it by identity. Accept any Video and return the argument as-is
@@ -113,7 +113,7 @@ public class VideoServiceTest {
     @DisplayName(value = "create: Should throw exc with empty name")
     void shouldThrowWhenGiveBadName(){
         // ARRANGE
-        VideoDto videoInput = new VideoDto("test",555L);
+        VideoDto videoInput = new VideoDto("test",555L, null);
         // ACT + ASSERT
         assertThatThrownBy(() -> videoService.addVideo(videoInput)).
                             isInstanceOf(IllegalArgumentException.class);
@@ -126,6 +126,7 @@ public class VideoServiceTest {
         Video exampleVideo = new Video();
         exampleVideo.setName("Test");
         exampleVideo.setVideoId(1L);
+        exampleVideo.setVideoStatus(VideoStatus.PROCESSING);
 
         // NOTE: categoryList must NOT be null: the service calls
         // categorySet.addAll(categoryList), and addAll(null) throws an NPE.

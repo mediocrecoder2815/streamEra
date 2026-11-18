@@ -495,6 +495,13 @@ async function renderUpload(gen) {
           <span>Title</span>
           <input name="title" id="upload-title" required maxlength="120" placeholder="My first stream">
         </label>
+        <div class="field">
+          <span>Categories</span>
+          <div id="upload-categories" class="category-options" aria-live="polite">
+            <p class="hint">Loading categories…</p>
+          </div>
+          <p class="hint">Optional. Select all that apply.</p>
+        </div>
         <label class="field">
           <span>Video file</span>
           <input name="file" id="upload-file" type="file" accept="video/mp4,.mp4" required>
@@ -521,7 +528,35 @@ async function renderUpload(gen) {
   const meterFill = meter.querySelector("span");
   const submit = document.getElementById("upload-submit");
   const note = document.getElementById("upload-note");
+  const categoryBox = document.getElementById("upload-categories");
   let busy = false;
+
+  async function loadCategoryOptions() {
+    try {
+      const data = await gql(`query { categories { categoryId name } }`);
+      if (gen !== generation) return;
+
+      const categories = (data.categories || [])
+        .filter((category) => category?.categoryId != null && category?.name)
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      if (categories.length === 0) {
+        categoryBox.innerHTML = `<p class="hint">No categories available yet.</p>`;
+        return;
+      }
+      categoryBox.innerHTML = categories.map((category) => `
+        <label class="category-option">
+          <input type="checkbox" value="${esc(category.categoryId)}" data-category-name="${esc(category.name)}">
+          ${esc(category.name)}
+        </label>
+      `).join("");
+    } catch (error) {
+      if (gen !== generation) return;
+      categoryBox.innerHTML = `<p class="hint">Categories could not be loaded.</p>`;
+    }
+  }
+
+  loadCategoryOptions();
 
   const showError = (message) => {
     errorBox.textContent = message;
@@ -561,6 +596,12 @@ async function renderUpload(gen) {
     resetFeedback();
     const title = titleInput.value.trim();
     const file = fileInput.files?.[0];
+    const selectedCategories = Array.from(
+      categoryBox.querySelectorAll('input[type="checkbox"]:checked'),
+    ).map((input) => ({
+      categoryId: Number(input.value),
+      name: input.dataset.categoryName || "",
+    })).filter((category) => Number.isInteger(category.categoryId) && category.name);
 
     if (!title) {
       showError("Give the video a title first.");
@@ -596,6 +637,24 @@ async function renderUpload(gen) {
       const ticket = created.add_video;
       if (!ticket?.uploadUrl || ticket.videoId == null) {
         throw new Error("The backend did not return a usable upload ticket.");
+      }
+
+      if (selectedCategories.length > 0) {
+        showStatus("Saving categories…");
+        submit.textContent = "Saving categories…";
+        await gql(
+          `mutation($video: VideoUpdateInput!) {
+             update_video(video: $video) { videoId }
+           }`,
+          {
+            video: {
+              videoId: Number(ticket.videoId),
+              name: title,
+              videoUrl: "",
+              categoryList: selectedCategories,
+            },
+          },
+        );
       }
 
       showStatus("Uploading the video directly to storage…");

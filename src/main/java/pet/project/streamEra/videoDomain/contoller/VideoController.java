@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import pet.project.streamEra.videoDomain.dtos.UploadTicket;
 import pet.project.streamEra.videoDomain.dtos.VideoDto;
 import pet.project.streamEra.videoDomain.dtos.VideoUpdateDto;
+import pet.project.streamEra.videoDomain.entity.Category;
 import pet.project.streamEra.videoDomain.entity.Video;
 import pet.project.streamEra.videoDomain.service.VideoService;
 
@@ -33,6 +34,8 @@ public class VideoController {
     public Video updateVideoName(@Argument(name = "video") VideoUpdateDto videoUpdateDto){
         return videoService.updateVideo(videoUpdateDto);
     }
+
+
 
     @MutationMapping(name ="delete_video")
     public String deleteVideo(@Argument("videoId") Long videoId){
